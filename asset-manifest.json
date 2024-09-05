@@ -1,21 +1,20 @@
 {
   "files": {
-    "main.css": "./static/css/main.9de09c8b.css",
-    "main.js": "./static/js/main.c8850496.js",
+    "main.css": "./static/css/main.0808a3ea.css",
+    "main.js": "./static/js/main.f245f78e.js",
     "static/js/453.144c4b78.chunk.js": "./static/js/453.144c4b78.chunk.js",
-    "static/media/Montserrat-Bold.woff": "./static/media/Montserrat-Bold.3155f256200b7d559607.woff",
-    "static/media/Montserrat-SemiBold.woff": "./static/media/Montserrat-SemiBold.411a4d1469b75e0248ff.woff",
-    "static/media/Montserrat-Regular.woff": "./static/media/Montserrat-Regular.4a3d63613a362f90a9e6.woff",
-    "static/media/Montserrat-Bold.woff2": "./static/media/Montserrat-Bold.d28745f2b8e5c12d3607.woff2",
-    "static/media/Montserrat-SemiBold.woff2": "./static/media/Montserrat-SemiBold.165aed18e64970167ee7.woff2",
-    "static/media/Montserrat-Regular.woff2": "./static/media/Montserrat-Regular.4ada7f2f580c676690f0.woff2",
-    "static/media/sd_logo.svg": "./static/media/sd_logo.e15bfc16d0d2900d04c5ba9bdf630ce5.svg",
+    "static/media/Robotobold.woff": "./static/media/Robotobold.1e0c22679977ac02c8f6.woff",
+    "static/media/Robotomedium.woff": "./static/media/Robotomedium.5673e7a07239f4785325.woff",
+    "static/media/Roboto.woff": "./static/media/Roboto.59d18e163bfcd0607572.woff",
+    "static/media/Robotobold.woff2": "./static/media/Robotobold.23c8ce07bd38f6723622.woff2",
+    "static/media/Robotomedium.woff2": "./static/media/Robotomedium.76cb645b72a0083e239f.woff2",
+    "static/media/Roboto.woff2": "./static/media/Roboto.806e04d8241d87f99a68.woff2",
+    "static/media/sd_logo_3.svg": "./static/media/sd_logo_3.274d439821a676019ea5551946452744.svg",
     "static/media/current_orders_icon.svg": "./static/media/current_orders_icon.d137eacc7f0d8d6c7fe0097dd5647c85.svg",
-    "static/media/human_icon.svg": "./static/media/human_icon.776439171e5b74da271e35442eeb97c6.svg",
-    "static/media/car_icon.svg": "./static/media/car_icon.399acfd07ff0659a519fa5d28dac70d1.svg",
+    "static/media/motoroller_icon.svg": "./static/media/motoroller_icon.a7748f7a3bbf4f418218ca8c3ae64919.svg",
+    "static/media/truck_icon.svg": "./static/media/truck_icon.abb41a41205420b839b9d5c782662e9d.svg",
     "static/media/support_icon.svg": "./static/media/support_icon.14104c0c5ca332e69da2ea47907d2b44.svg",
-    "static/media/truck_icon.svg": "./static/media/truck_icon.bf80fea56c6cd6f9303f22bc7ab2cce7.svg",
-    "static/media/walking.svg": "./static/media/walking.3a29647dc561749216657e9d25999eb9.svg",
+    "static/media/car_icon.svg": "./static/media/car_icon.b9f39edcea0da01263c6993146a82d9d.svg",
     "static/media/search_icon.svg": "./static/media/search_icon.b7c2d2b0c9addfb362adab2e47d6b435.svg",
     "static/media/like_icon.svg": "./static/media/like_icon.d892af60beb2732684b9851f92542260.svg",
     "static/media/user_icon.svg": "./static/media/user_icon.c1bec322d86e264e33b9d360aece1f4b.svg",
@@ -24,12 +23,12 @@
     "static/media/menu_icon.svg": "./static/media/menu_icon.d0a91c21b979d8c00fcb89fe5f404714.svg",
     "static/media/point_b_icon.svg": "./static/media/point_b_icon.df5dd1d035c49f357eeef30616c5964a.svg",
     "static/media/point_a_icon.svg": "./static/media/point_a_icon.5ee309d402f8620932480c0e77611e4c.svg",
-    "main.9de09c8b.css.map": "./static/css/main.9de09c8b.css.map",
-    "main.c8850496.js.map": "./static/js/main.c8850496.js.map",
+    "main.0808a3ea.css.map": "./static/css/main.0808a3ea.css.map",
+    "main.f245f78e.js.map": "./static/js/main.f245f78e.js.map",
     "453.144c4b78.chunk.js.map": "./static/js/453.144c4b78.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9de09c8b.css",
-    "static/js/main.c8850496.js"
+    "static/css/main.0808a3ea.css",
+    "static/js/main.f245f78e.js"
   ]
 }
