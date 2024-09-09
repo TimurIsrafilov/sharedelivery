@@ -1,13 +1,39 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace; */
 }
+
+:root {
+  --black: rgba(0, 0, 0, 1);
+  --dark-grey: rgba(103, 103, 103, 1);
+  --light-grey: rgba(165, 165, 165, 1);
+  --background-grey: rgba(234, 234, 234, 1);
+  --blue: rgba(76, 64, 230, 1);
+  --green: rgba(150, 229, 135, 1);
+  --white: rgba(255, 255, 255, 1);
+
+  --font-size-12: 12px;
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+  --font-size-22: 22px;
+  --font-size-24: 24px;
+
+  --font-style-normal: normal;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+}
+
+@import url("./fonts/fonts.css");

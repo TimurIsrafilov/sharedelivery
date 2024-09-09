@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,15 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-grey);
+
+/* overflow-y:hidden; */
+  
+  font-family: 'Roboto', 'Arial', sans-serif;
 }
