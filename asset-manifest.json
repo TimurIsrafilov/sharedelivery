@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.cdafe06c.css",
-    "main.js": "./static/js/main.3204b046.js",
+    "main.css": "./static/css/main.34152102.css",
+    "main.js": "./static/js/main.87db40b5.js",
     "static/js/453.144c4b78.chunk.js": "./static/js/453.144c4b78.chunk.js",
     "static/media/Robotobold.woff": "./static/media/Robotobold.1e0c22679977ac02c8f6.woff",
     "static/media/Robotomedium.woff": "./static/media/Robotomedium.5673e7a07239f4785325.woff",
@@ -13,23 +13,27 @@
     "static/media/current_orders_icon.svg": "./static/media/current_orders_icon.d137eacc7f0d8d6c7fe0097dd5647c85.svg",
     "static/media/motoroller_icon.svg": "./static/media/motoroller_icon.a7748f7a3bbf4f418218ca8c3ae64919.svg",
     "static/media/truck_icon.svg": "./static/media/truck_icon.abb41a41205420b839b9d5c782662e9d.svg",
+    "static/media/sort_icon.svg": "./static/media/sort_icon.54bddc304950d0d55d18a688826fd023.svg",
     "static/media/support_icon.svg": "./static/media/support_icon.14104c0c5ca332e69da2ea47907d2b44.svg",
     "static/media/car_icon.svg": "./static/media/car_icon.b9f39edcea0da01263c6993146a82d9d.svg",
-    "static/media/search_icon.svg": "./static/media/search_icon.b7c2d2b0c9addfb362adab2e47d6b435.svg",
+    "static/media/search_icon2.svg": "./static/media/search_icon2.70a8ee9bceb801d3f4d605bbe43990ea.svg",
     "static/media/like_icon2.svg": "./static/media/like_icon2.cdddf01b24153e2e12500100b21d0958.svg",
     "static/media/like_icon.svg": "./static/media/like_icon.d892af60beb2732684b9851f92542260.svg",
     "static/media/user_icon.svg": "./static/media/user_icon.c1bec322d86e264e33b9d360aece1f4b.svg",
+    "static/media/like_icon_active.svg": "./static/media/like_icon_active.99b58e75cbfcb8976dcde44fc7b231cd.svg",
+    "static/media/sort_arrow_icon.svg": "./static/media/sort_arrow_icon.9188222d9d6ef83ec186713d0c029488.svg",
     "index.html": "./index.html",
+    "static/media/arrow_back_icon.svg": "./static/media/arrow_back_icon.02c936d71029852ae31bc9d9a02e865f.svg",
     "static/media/arrow_icon.svg": "./static/media/arrow_icon.be78c5098114c094ac7c6a0356ca5691.svg",
     "static/media/menu_icon.svg": "./static/media/menu_icon.d0a91c21b979d8c00fcb89fe5f404714.svg",
     "static/media/point_b_icon.svg": "./static/media/point_b_icon.df5dd1d035c49f357eeef30616c5964a.svg",
     "static/media/point_a_icon.svg": "./static/media/point_a_icon.5ee309d402f8620932480c0e77611e4c.svg",
-    "main.cdafe06c.css.map": "./static/css/main.cdafe06c.css.map",
-    "main.3204b046.js.map": "./static/js/main.3204b046.js.map",
+    "main.34152102.css.map": "./static/css/main.34152102.css.map",
+    "main.87db40b5.js.map": "./static/js/main.87db40b5.js.map",
     "453.144c4b78.chunk.js.map": "./static/js/453.144c4b78.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cdafe06c.css",
-    "static/js/main.3204b046.js"
+    "static/css/main.34152102.css",
+    "static/js/main.87db40b5.js"
   ]
 }
