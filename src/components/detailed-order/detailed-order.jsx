@@ -1,25 +1,15 @@
 import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+import StarRating from "../star-rating/star-rating";
+
 import styles from "./detailed-order.module.css";
-
-import arrow_icon from "../../images/arrow_icon.svg";
-
-import point_a_icon from "../../images/point_a_icon.svg";
-import point_b_icon from "../../images/point_b_icon.svg";
 
 import arrow_back_icon from "../../images/arrow_back_icon.svg";
 import like_icon from "../../images/like_icon2.svg";
 import like_icon_active from "../../images/like_icon_active.svg";
-import star_icon from "../../images/star_icon.svg";
 
-import button_offer_price from "../../images/button_offer_price2.svg";
-import button_take_order from "../../images/button_take_order.svg";
-
-import { TypeOrderInfo } from "../../types/types";
-
-import { loadOrder } from "../../services/order/actions";
-import { FROM, ORDERS, SENDER, TO } from "../../utils/constants";
+import { FROM, SENDER, TO } from "../../utils/constants";
 
 import { selectOrder } from "../../services/order/reducer";
 import { useState } from "react";
@@ -38,7 +28,6 @@ function DetailedOrder(
 
   const handleBackClick = () => {
     navigate("/");
-    // dispatch(deleteOrderValue());
   };
 
   const handleLikeClick = () => {
@@ -48,14 +37,14 @@ function DetailedOrder(
   return (
     <div className={styles.detailed_order}>
       {orderToShow ? (
-        <>
+        <div className={styles.detailed_order}>
           <div className={styles.detailed_order__main_container}>
             <p
               className={styles.detailed_order__price}
             >{`${orderToShow.price} €`}</p>
             <button
+              type="button"
               className={styles.detailed_order__button}
-              // htmltype="button"
               onClick={handleBackClick}
             >
               <img
@@ -67,8 +56,8 @@ function DetailedOrder(
 
             <div className={styles.detailed_order__icon_container}>
               <button
+                type="button"
                 className={styles.detailed_order__button}
-                // htmltype="button"
                 onClick={handleLikeClick}
               >
                 <img
@@ -132,46 +121,44 @@ function DetailedOrder(
               </p>
             </div>
 
-            <p className={styles.detailed_order__time}>
-              {orderToShow.sender_rating}
-            </p>
-
-            <img
-              className={styles.detailed_order__star_icon}
-              src={star_icon}
-              alt="star_icon"
-            />
-                  <p className={styles.detailed_order__time}>
-            {orderToShow.sender_rating}
-          </p>
+            <div className={styles.detailed_order__sender_rating}>
+              <StarRating rating={orderToShow.sender_rating} />
+              <p className={styles.detailed_order__rating}>
+                {orderToShow.sender_rating}
+              </p>
+            </div>
           </div>
 
-          <p className={styles.detailed_order__time}>
-            {orderToShow.sender_rating}
-          </p>
-
-          <p className={styles.detailed_order__time}>
+          <p className={styles.detailed_order__description}>
             {orderToShow.detailed_description}
           </p>
 
-          <div className={styles.detailed_order__buttons_container}>
-            <button className={styles.detailed_order__button}>
+          <div className={styles.detailed_order__photos_container}>
+            {orderToShow?.photos.map((item, index) => (
               <img
-                // className={styles.detailed_order__star_icon}
-                src={button_offer_price}
-                alt="button_offer_price"
+                className={styles.detailed_order__photo}
+                src={item}
+                alt={`order-photo ${index + 1}`}
+                key={index}
               />
-            </button>
+            ))}
+          </div>
 
-            <button className={styles.detailed_order__button}>
-              <img
-                // className={styles.detailed_order__star_icon}
-                src={button_take_order}
-                alt="button_take_order"
-              />
+          <div className={styles.detailed_order__buttons_container}>
+            <button
+              type="button"
+              className={styles.detailed_order__button_price}
+            >
+              Offer my price
+            </button>
+            <button
+              type="button"
+              className={styles.detailed_order__button_order}
+            >
+              Take order
             </button>
           </div>
-        </>
+        </div>
       ) : (
         ""
       )}

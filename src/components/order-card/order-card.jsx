@@ -48,8 +48,13 @@ function OrderCard({ item }) {
 
   return (
     <div className={styles.order_card}>
+      {/* <button
+        type="button"
+        onClick={handleUserShow}
+        className={styles.order_card__button}
+      > */}
       <button
-        htmltype="button"
+        type="button"
         onClick={handleUserShow}
         className={styles.order_card__button}
       >
@@ -111,7 +116,7 @@ function OrderCard({ item }) {
             <div className={styles.order_card__town_date_icons_container}>
               <div className={styles.order_card__routh_icons_container}>
                 <img
-                  className={styles.order_card__routh_point_icon}
+                  className={styles.order_card__routh_point_icon_a}
                   src={point_a_icon}
                   alt="point_a_icon"
                 />
@@ -145,7 +150,7 @@ function OrderCard({ item }) {
 
             <div className={styles.order_card__town_date_icons_container}>
               <img
-                className={styles.order_card__routh_point_icon}
+                className={styles.order_card__routh_point_icon_b}
                 src={point_b_icon}
                 alt="point_b_icon"
               />
@@ -167,19 +172,18 @@ function OrderCard({ item }) {
               </div>
             </div>
           </div>
-
-          <button
-            className={styles.order_card__like_button}
-            // htmltype="button"
-            onClick={handleLikeClick}
-          >
-            <img
-              className={styles.order_card__like_icon}
-              src={likeStatus ? like_icon : like_icon_active}
-              alt="like_icon"
-            />
-          </button>
         </div>
+      </button>
+      <button
+        type="button"
+        className={styles.order_card__like_button}
+        onClick={handleLikeClick}
+      >
+        <img
+          className={styles.order_card__like_icon}
+          src={likeStatus ? like_icon : like_icon_active}
+          alt="like_icon"
+        />
       </button>
     </div>
   );

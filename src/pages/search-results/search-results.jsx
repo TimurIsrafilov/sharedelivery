@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 import styles from "./search-results.module.css";
 
 import { orders } from "../../utils/mock_data";
-import OrderCard from "../order-card/order-card";
+// import OrderCard from "../order-card/order-card";
 
 import { TypeOrderInfo } from "../../types/types";
 import { useEffect, useState } from "react";
@@ -14,7 +14,9 @@ import { loadOrders } from "../../services/orders/actions";
 
 import { selectOrders } from "../../services/orders/reducer";
 import { deleteOrderValue } from "../../services/order/reducer";
-import TopMenu from "../top-menu/top-menu";
+// import TopMenu from "../top-menu/top-menu";
+import OrderCard from "../../components/order-card/order-card";
+import TopMenu from "../../components/top-menu/top-menu";
 
 function SearchResults() {
   const dispatch = useDispatch();

@@ -4,6 +4,9 @@
     margin: 0;
     padding: 16px 24px 16px 16px;
     background-color: var(--white);
+    box-shadow: var(--box-shadow);
+
+    position: "relative"
 }
 
 .order_card__button {
@@ -12,12 +15,16 @@
     cursor: pointer;
     padding: 0;
     margin: 0;
+    text-decoration: none;
+
+    position: relative
 }
 
 .order_card__main_container {
     display: flex;
     justify-content: space-between;
-    margin: 0 0 0 12px;
+    align-items: center;
+    margin: 0 0 10px 12px;
     padding: 0;
 }
 
@@ -56,6 +63,7 @@
     margin: 0;
     padding: 0;
     width: 100px;
+    text-align: right;
 }
 
 .order_card__routh_like_container {
@@ -98,17 +106,14 @@
     font-size: var(--font-size-16);
     font-style: var(--font-style-normal);
     font-weight: var(--font-weight-bold);
+    line-height: 14px;
     color: var(--black);
 
     margin: 0;
     padding: 0;
 
-
-
-
     word-break: break-all;
     text-align: start;
-
 }
 
 .order_card__date_container {
@@ -139,17 +144,18 @@
     padding: 0;
 }
 
-.order_card__routh_point_icon {
+.order_card__routh_point_icon_a {
     display: flex;
     height: 8px;
+    width: 12px;
+    margin: 4px 0 0 0;
 }
 
-.order_card__routh_point_icon:first-child {
-    margin: 6px 0 0 0;
-}
-
-.order_card__routh_point_icon:last-child {
-    margin: 0 0 6px 0;
+.order_card__routh_point_icon_b {
+    display: flex;
+    height: 8px;
+    width: 12px;
+    margin: 2px 0 0 0;
 }
 
 .order_card__arrow_container {
@@ -167,7 +173,7 @@
     border: 1.05px, solid, var(--light-grey);
     border-radius: 1px;
     flex-grow: 1;
-    margin: 6px 0 2px 0;
+    margin: 2px 0 2px 0;
     padding: 0;
 }
 
@@ -184,8 +190,16 @@
     cursor: pointer;
     padding: 0;
     margin: 0;
+
+    position: "absolute";
+    /* right: 10;
+    top: 10;
+    left: 10;
+    right: 10; */
 }
 
 .order_card__like_icon {
-    align-self: end;
+    align-self: ends;
+    z-index: 10;
+
 }

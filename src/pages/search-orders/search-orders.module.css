@@ -1,0 +1,16 @@
+.search_orders {
+    margin: 2px 0 0 0 ;
+    padding: 0;
+}
+
+.search_orders__form_container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* .search_orders__input{
+    display: flex;
+    flex-grow: 1; 
+
+} */

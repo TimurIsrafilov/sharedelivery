@@ -1,41 +1,157 @@
 import styles from "./footer.module.css";
 
-import search_icon from "../../images/search_icon2.svg";
-import like_icon from "../../images/like_icon.svg";
-import current_orders_icon from "../../images/current_orders_icon.svg";
-import support_icon from "../../images/support_icon.svg";
+import footer_search_icon from "../../images/footer_search_icon.svg";
+import footer_search_icon_active from "../../images/footer_search_icon_active.svg";
+
+import footer_like_icon from "../../images/footer_like_icon.svg";
+import footer_like_icon_active from "../../images/footer_like_icon_active.svg";
+
+import footer_current_icon from "../../images/footer_current_icon.svg";
+import footer_current_icon_active from "../../images/footer_current_icon_active.svg";
+
+import footer_support_icon from "../../images/footer_support_icon.svg";
+import footer_support_icon_active from "../../images/footer_support_icon_active.svg";
+
+import { NavLink, useNavigate } from "react-router-dom";
+import {
+  CURRENT_ORDERS,
+  FAVORITE_ORDERS,
+  SEARCH_ORDERS,
+  SUPPORT,
+} from "../../utils/constants";
 
 function Footer() {
+  // const navigate = useNavigate();
+
+  // const handleSearchOrdersClick = () => {
+  //   navigate(SEARCH_ORDERS);
+  // };
+
+  // const handleFavoriteOrdersClick = () => {
+  //   navigate(FAVORITE_ORDERS);
+  // };
+
+  // const handleCurrentOrdersClick = () => {
+  //   navigate(CURRENT_ORDERS);
+  // };
+
+  // const handleSupportClick = () => {
+  //   navigate(SUPPORT);
+  // };
+
   return (
     <footer className={styles.footer}>
-      <div className={styles.footer__icons_container}>
-        <img
+      <NavLink to={SEARCH_ORDERS} className={styles.footer__icons_container}>
+        {({ isActive }) =>
+          isActive ? (
+            <>
+              <img
+                className={styles.footer__icon}
+                src={footer_search_icon_active}
+                alt="footer_search_icon_active"
+              />
+              <h3 className={styles.footer__icon_title_active}>Search</h3>
+            </>
+          ) : (
+            <>
+              <img
+                className={styles.footer__icon}
+                src={footer_search_icon}
+                alt="footer_search_icon"
+              />
+              <h3 className={styles.footer__icon_title}>Search</h3>
+            </>
+          )
+        }
+      </NavLink>
+
+      <NavLink to={FAVORITE_ORDERS} className={styles.footer__icons_container}>
+        {({ isActive }) =>
+          isActive ? (
+            <>
+              <img
+                className={styles.footer__icon}
+                src={footer_like_icon_active}
+                alt="footer_like_icon_active"
+              />
+              <h3 className={styles.footer__icon_title_active}>
+                Favorite orders
+              </h3>
+            </>
+          ) : (
+            <>
+              <img
+                className={styles.footer__icon}
+                src={footer_like_icon}
+                alt="footer_like_icon"
+              />
+              <h3 className={styles.footer__icon_title}>Favorite orders</h3>
+            </>
+          )
+        }
+      </NavLink>
+
+      <NavLink to={CURRENT_ORDERS} className={styles.footer__icons_container}>
+        {({ isActive }) =>
+          isActive ? (
+            <>
+              <img
+                className={styles.footer__icon}
+                src={footer_current_icon_active}
+                alt="footer_current_icon_active"
+              />
+              <h3 className={styles.footer__icon_title_active}>
+                Current orders
+              </h3>
+            </>
+          ) : (
+            <>
+              <img
+                className={styles.footer__icon}
+                src={footer_current_icon}
+                alt="footer_current_icon"
+              />
+              <h3 className={styles.footer__icon_title}>Current orders</h3>
+            </>
+          )
+        }
+      </NavLink>
+
+      <NavLink to={SUPPORT} className={styles.footer__icons_container}>
+
+      {({ isActive }) =>
+          isActive ? (
+            <>
+              <img
+                className={styles.footer__icon}
+                src={footer_support_icon_active}
+                alt="footer_support_icon_active"
+              />
+              <h3 className={styles.footer__icon_title_active}>
+              Support
+              </h3>
+            </>
+          ) : (
+            <>
+              <img
+                className={styles.footer__icon}
+               src={footer_support_icon}
+          alt="footer_support_icon"
+              />
+              <h3 className={styles.footer__icon_title}>Support</h3>
+            </>
+          )
+        }
+
+
+
+        {/* <img
           className={styles.footer__icon}
-          src={search_icon}
-          alt="search_icon"
+          src={footer_support_icon}
+          alt="footer_support_icon"
         />
-        <h3 className={styles.footer__icon_title}>Search</h3>
-      </div>
-      <div className={styles.footer__icons_container}>
-        <img className={styles.footer__icon} src={like_icon} alt="like_icon" />
-        <h3 className={styles.footer__icon_title}>Favorite orders</h3>
-      </div>
-      <div className={styles.footer__icons_container}>
-        <img
-          className={styles.footer__icon}
-          src={current_orders_icon}
-          alt="current_orders_icon"
-        />
-        <h3 className={styles.footer__icon_title}>Current orders</h3>
-      </div>
-      <div className={styles.footer__icons_container}>
-        <img
-          className={styles.footer__icon}
-          src={support_icon}
-          alt="support_icon"
-        />
-        <h3 className={styles.footer__icon_title}>Support</h3>
-      </div>
+        <h3 className={styles.footer__icon_title}>Support</h3> */}
+      </NavLink>
     </footer>
   );
 }

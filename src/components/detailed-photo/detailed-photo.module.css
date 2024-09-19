@@ -1,0 +1,20 @@
+.detailed_photo__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.detailed_photo__button {
+    border: none;
+    background-color: var(--white);
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    height: 58px;
+}
+
+.detailed_photo__icon {}
+
+.detailed_photo {
+    height: 518px;
+}

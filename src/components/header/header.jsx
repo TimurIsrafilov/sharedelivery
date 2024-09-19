@@ -10,6 +10,9 @@ import logo from "../../images/sd_logo_4.svg";
 
 import { loadOrder } from "../../services/order/actions";
 import { deleteOrderValue } from "../../services/order/reducer";
+import { createUser } from "../../utils/api";
+
+import * as api from "../../utils/api";
 
 function Header() {
   const dispatch = useDispatch();
@@ -17,13 +20,15 @@ function Header() {
 
   const handleLogoClick = () => {
     navigate("/");
-    // dispatch(deleteOrderValue());
+    // api.createUser();
   };
 
   return (
     <header className={styles.header}>
-      <img src={menu_icon} className={styles.header__icon} alt="menu_icon" />
+      {/* <img src={menu_icon} className={styles.header__icon} alt="menu_icon" /> */}
+      <div className={styles.header__icon}></div>
       <button
+        type="button"
         className={styles.header__logo_button}
         // htmltype="button"
         onClick={handleLogoClick}

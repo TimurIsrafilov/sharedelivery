@@ -1,0 +1,9 @@
+.checkbox {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-16);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-regular);
+    color: var(--dark-grey);
+    margin: 0;
+    padding: 0;
+}
