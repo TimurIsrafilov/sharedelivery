@@ -1,21 +1,21 @@
 import { useNavigate } from "react-router-dom";
 
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
 import styles from "./header.module.css";
 
-import menu_icon from "../../images/menu_icon.svg";
+// import menu_icon from "../../images/menu_icon.svg";
 import user_icon from "../../images/user_icon.svg";
 import logo from "../../images/sd_logo.svg";
 
-import { loadOrder } from "../../services/order/actions";
-import { deleteOrderValue } from "../../services/order/reducer";
-import { createUser } from "../../utils/api";
+// import { loadOrder } from "../../services/order/actions";
+// import { deleteOrderValue } from "../../services/order/reducer";
+// import { createUser } from "../../utils/api";
 
-import * as api from "../../utils/api";
+// import * as api from "../../utils/api";
 
 function Header() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogoClick = () => {

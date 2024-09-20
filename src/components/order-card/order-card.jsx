@@ -15,7 +15,7 @@ import motoroller_icon from "../../images/motoroller_icon.svg";
 import like_icon from "../../images/like_icon2.svg";
 import like_icon_active from "../../images/like_icon_active.svg";
 
-import { TypeOrderInfo } from "../../types/types";
+// import { TypeOrderInfo } from "../../types/types";
 
 import { loadOrder } from "../../services/order/actions";
 import { ORDERS } from "../../utils/constants";

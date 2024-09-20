@@ -1,4 +1,4 @@
-import { ThunkAction, configureStore } from "@reduxjs/toolkit";
+import {  configureStore } from "@reduxjs/toolkit";
 import { reducer } from "./reducer";
 
 // import type {} from "redux-thunk/extend-redux";

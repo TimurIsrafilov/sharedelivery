@@ -1,9 +1,9 @@
 import styles from "./common-input.module.css";
 
 import { DatePicker, Input } from "antd";
-import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+// import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 
-import { useState } from "react";
+// import { useState } from "react";
 
 function CommonInput({ item }) {
   // const [passwordVisible, setPasswordVisible] = useState(false);

@@ -1,10 +1,10 @@
-import { useState } from "react";
+// import { useState } from "react";
 import CommonInput from "../common-input/common-input";
 import styles from "./common-form.module.css";
 
-import { ConfigProvider, Radio } from "antd";
+// import { ConfigProvider, Radio } from "antd";
 
-import { Checkbox, Button } from "antd";
+// import { Checkbox, Button } from "antd";
 
 import truck_icon_dark from "../../images/truck_icon_dark.svg";
 import new_order_icon from "../../images/new_order_icon.svg";
@@ -15,7 +15,7 @@ import { FORGOT_PASSWORD } from "../../utils/constants";
 import AutoCompleteInput from "../auto-complete-input/auto-complete-input";
 
 function CommonForm({ formInputs, formType }) {
-  const [radioChecked, setRadioChecked] = useState(false);
+  // const [radioChecked, setRadioChecked] = useState(false);
 
   // const handleRadioChange = () => {
   //   setRadioChecked(!radioChecked);

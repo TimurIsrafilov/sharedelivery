@@ -14,21 +14,21 @@ import {
   ORDER_PHOTO,
   ORDERS,
   SEARCH_ORDERS,
-  SEARCH_RESULTS,
+  // SEARCH_RESULTS,
   SIGNUP,
   SUPPORT,
 } from "../../utils/constants";
-import OrderCard from "../order-card/order-card";
-import TopMenu from "../top-menu/top-menu";
+// import OrderCard from "../order-card/order-card";
+// import TopMenu from "../top-menu/top-menu";
 import DetailedOrder from "../detailed-order/detailed-order";
-import SearchOrders from "../../pages/search-orders/search-orders";
+// import SearchOrders from "../../pages/search-orders/search-orders";
 import FavoriteOrders from "../../pages/favorite-orders/favorite-orders";
 import CurrentOrders from "../../pages/current-orders/current-orders";
 import Support from "../../pages/support/support";
 import SearchResults from "../../pages/search-results/search-results";
 import Preloader from "../preloader/preloader";
 import { useSelector } from "react-redux";
-import { selectOrder, selectOrderLoading } from "../../services/order/reducer";
+import { selectOrderLoading } from "../../services/order/reducer";
 import { selectOrdersLoading } from "../../services/orders/reducer";
 import DetailedPhoto from "../detailed-photo/detailed-photo";
 import Login from "../../pages/login/login";
@@ -42,7 +42,7 @@ function App() {
   const isOrderLoading = useSelector(selectOrderLoading);
   const isOrdersLoading = useSelector(selectOrdersLoading);
 
-  const orderToShow = useSelector(selectOrder);
+  // const orderToShow = useSelector(selectOrder);
   const currentUrl = location.pathname.split("/").pop();
   // const isUsersLoading = useSelector(selectUsersLoading);
   // const isWorkerLoading = useSelector(selectWorkerLoading);

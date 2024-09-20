@@ -1,9 +1,9 @@
 import styles from "./common-checkbox.module.css";
 
-import { Checkbox, ConfigProvider, Input } from "antd";
-import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import { Checkbox, ConfigProvider } from "antd";
+// import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 
-import { useState } from "react";
+// import { useState } from "react";
 
 function CommonCheckbox({ title }) {
   // const [passwordVisible, setPasswordVisible] = useState(false);

@@ -5,11 +5,11 @@ import { v4 as uuidv4 } from "uuid";
 
 import styles from "./search-results.module.css";
 
-import { orders } from "../../utils/mock_data";
+// import { orders } from "../../utils/mock_data";
 // import OrderCard from "../order-card/order-card";
 
-import { TypeOrderInfo } from "../../types/types";
-import { useEffect, useState } from "react";
+// import { TypeOrderInfo } from "../../types/types";
+import { useEffect } from "react";
 import { loadOrders } from "../../services/orders/actions";
 
 import { selectOrders } from "../../services/orders/reducer";

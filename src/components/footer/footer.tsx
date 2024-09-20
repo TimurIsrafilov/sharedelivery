@@ -12,7 +12,7 @@ import footer_current_icon_active from "../../images/footer_current_icon_active.
 import footer_support_icon from "../../images/footer_support_icon.svg";
 import footer_support_icon_active from "../../images/footer_support_icon_active.svg";
 
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   CURRENT_ORDERS,
   FAVORITE_ORDERS,
