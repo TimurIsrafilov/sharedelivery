@@ -6,7 +6,7 @@ import styles from "./header.module.css";
 
 import menu_icon from "../../images/menu_icon.svg";
 import user_icon from "../../images/user_icon.svg";
-import logo from "../../images/sd_logo_4.svg";
+import logo from "../../images/sd_logo.svg";
 
 import { loadOrder } from "../../services/order/actions";
 import { deleteOrderValue } from "../../services/order/reducer";
