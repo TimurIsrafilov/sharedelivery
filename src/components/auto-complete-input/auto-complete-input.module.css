@@ -1,0 +1,44 @@
+.auto_complete_input__container {
+    /* height: 44px; */
+    position: relative;
+    margin: 6px 0 6px 0;
+    padding: 0;
+    /* flex-grow: 1;
+    width: 320px; */
+    display: flex;
+    flex-direction: column;
+}
+
+.auto_complete_input__title {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-12);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-regular);
+    color: var(--dark-grey);
+    margin: 0;
+    padding: 2px 4px 2px 4px;
+    background-color: var(--white);
+    position: absolute;
+    top: -8px;
+    left: 10px;
+    z-index: 2;
+}
+
+.auto_complete_input {
+    /* border: 1px solid  var(--dark-grey);
+    border-radius: 10px;
+    flex-grow: 1;  */
+
+    flex-grow: 1;
+} 
+
+.auto_complete_input__error {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-12);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-regular);
+    color: var(--red);
+    margin: 0;
+    padding: 2px 0 0 12px;
+    height: 16px;
+}

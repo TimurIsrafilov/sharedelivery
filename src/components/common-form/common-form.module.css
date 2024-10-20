@@ -1,0 +1,98 @@
+.common_form {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    margin: 0;
+    padding: 24px;
+
+}
+
+
+.common_form__checkbox_container {
+    margin: 6px 0 0 0;
+    padding: 0;
+}
+
+
+.common_form__radio {
+    /* font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-16);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-regular);
+    color: var(--dark-grey); */
+    margin: 32px 0 0 0;
+    padding: 0;
+    /* border-radius: 50%; */
+}
+
+.common_form__role_container {
+    position: relative;
+    margin: 6px 0 0 0;
+}
+
+.common_form__title {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-12);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-regular);
+    color: var(--dark-grey);
+    margin: 0;
+    padding: 2px 4px 2px 4px;
+    background-color: var(--white);
+    position: absolute;
+    top: -8px;
+    left: 10px;
+    z-index: 2;
+}
+
+.common_form__icons_container {
+    border: 1px solid var(--dark-grey);
+    border-radius: 5px;
+    margin: 0;
+    padding: 20px 20px 4px 16px;
+
+
+}
+
+.common_form__icon_checkbox_container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 8px 0;
+    padding: 0;
+}
+
+.common_form__icon_container {
+    display: flex;
+    align-items: center;
+    width: 92px;
+    justify-content: space-between;
+}
+
+.detailed_order__icon {}
+
+.common_form__icon_title {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-16);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-regular);
+    color: var(--dark-grey);
+    margin: 0;
+    padding: 0;
+}
+
+.common_form__button_empty_container {
+    height: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+.common_form__link {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-16);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-regular);
+    color: var(--blue);
+    margin: 12px 0 0 0;
+    padding: 0;
+    text-align: center;
+}

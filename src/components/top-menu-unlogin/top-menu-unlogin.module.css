@@ -1,0 +1,60 @@
+.top_menu_unlogin {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+}
+
+.top_menu_unlogin__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+
+    /* font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-16);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-regular);
+    color: var(--black); */
+}
+
+.top_menu_unlogin__button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: var(--background-grey);
+    border: 1px solid var(--dark-grey);
+    border-bottom: var(--white);
+    height: 32px;
+    width: 159px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.top_menu_unlogin__button_active {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: var(--white);
+    height: 32px;
+    width: 159px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.top_menu_unlogin__button_title {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-16);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-regular);
+    color: var(--black);
+    margin: 0 10px 0 0;
+    padding: 0;
+}

@@ -1,0 +1,205 @@
+.order_card {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 16px 24px 16px 16px;
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+
+    position: "relative"
+}
+
+.order_card__button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+
+    position: relative
+}
+
+.order_card__main_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 10px 12px;
+    padding: 0;
+}
+
+.order_card__price {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-24);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-bold);
+    color: var(--green);
+
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    text-align: start;
+}
+
+.order_card__icons_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order_card__icon {}
+
+.order_card__description {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-16);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-regular);
+    color: var(--dark-grey);
+
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    text-align: right;
+}
+
+.order_card__routh_like_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order_card__routh_container {
+    display: flex;
+    flex-direction: column;
+}
+
+.order_card__town_date_icons_container {
+    display: flex;
+}
+
+.order_card__routh_icons_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 12px;
+}
+
+.order_card__from_town_date_container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 12px 0;
+    padding: 0;
+}
+
+.order_card__to_town_date_container {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.order_card__town {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-16);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-bold);
+    line-height: 14px;
+    color: var(--black);
+
+    margin: 0;
+    padding: 0;
+
+    word-break: break-all;
+    text-align: start;
+}
+
+.order_card__date_container {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.order_card__date {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-14);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-medium);
+    color: var(--dark-grey);
+
+    margin: 0;
+    padding: 0;
+}
+
+.order_card__time {
+    font-family: 'Roboto', 'Arial', sans-serif;
+    font-size: var(--font-size-14);
+    font-style: var(--font-style-normal);
+    font-weight: var(--font-weight-regular);
+    color: var(--dark-grey);
+
+    margin: 0 0 0 8px;
+    padding: 0;
+}
+
+.order_card__routh_point_icon_a {
+    display: flex;
+    height: 8px;
+    width: 12px;
+    margin: 4px 0 0 0;
+}
+
+.order_card__routh_point_icon_b {
+    display: flex;
+    height: 8px;
+    width: 12px;
+    margin: 2px 0 0 0;
+}
+
+.order_card__arrow_container {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    flex-grow: 1;
+    position: relative;
+}
+
+.order_card__routh_arrow_pole {
+    display: flex;
+    align-self: center;
+    width: 0px;
+    border: 1.05px, solid, var(--light-grey);
+    border-radius: 1px;
+    flex-grow: 1;
+    margin: 2px 0 2px 0;
+    padding: 0;
+}
+
+.order_card__routh_arrow_icon {
+    display: flex;
+    position: absolute;
+}
+
+.order_card__like_button {
+    display: flex;
+    justify-content: flex-end;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+
+    position: "absolute";
+    /* right: 10;
+    top: 10;
+    left: 10;
+    right: 10; */
+}
+
+.order_card__like_icon {
+    align-self: ends;
+    z-index: 10;
+
+}
