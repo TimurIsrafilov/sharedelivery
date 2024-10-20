@@ -39,6 +39,7 @@ export const SEARCH_ORDERS: string = "/search-orders";
 export const FAVORITE_ORDERS: string = "/favorite-orders";
 export const CURRENT_ORDERS: string = "/current-orders";
 export const COMPLETED_ORDERS: string = "/completed-orders";
+export const ORDER_CREATE: string = "/order-create";
 export const SUPPORT: string = "/support";
 export const PAYMENT_DETAILS: string = "/payment-details";
 export const SETTINGS: string = "/settings";

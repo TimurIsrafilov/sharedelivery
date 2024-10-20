@@ -15,6 +15,7 @@ import {
   LOGIN,
   MESSAGES,
   NUMBER,
+  ORDER_CREATE,
   ORDER_PHOTO,
   ORDERS,
   PAYMENT_DETAILS,
@@ -66,6 +67,7 @@ import DeleteAccount from "../../pages/delete-account/delete-account";
 import { useEffect } from "react";
 import { checkUser, getUser } from "../../services/user/actions";
 import { OnlyAuth, OnlyUnAuth } from "../protected-route/protected-route";
+import OrderCreate from "../../pages/order-create/order-create";
 
 function App() {
   const location = useLocation();
@@ -160,6 +162,12 @@ function App() {
             path={COMPLETED_ORDERS}
             element={<OnlyAuth component={<CompletedOrders />} />}
           />
+
+          <Route
+            path={ORDER_CREATE}
+            element={<OnlyAuth component={<OrderCreate />} />}
+          />
+
           <Route
             path={PAYMENT_DETAILS}
             element={<OnlyAuth component={<PaymentDetails />} />}

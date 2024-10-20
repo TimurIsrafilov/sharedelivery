@@ -20,7 +20,7 @@ function NotFound404(): React.JSX.Element {
         type={"blue"}
         title={"Go to main page"}
         disabled={false}
-        onClick={handleOnClick}
+        // onClick={handleOnClick}
       />
     </div>
   );
