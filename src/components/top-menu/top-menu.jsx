@@ -7,11 +7,25 @@ import { useSelector } from "react-redux";
 import { selectOrders } from "../../services/orders/reducer";
 
 import "mapbox-gl/dist/mapbox-gl.css";
+import { selectSearchedOrders } from "../../services/searched-orders/reducer";
+import { useLocation } from "react-router-dom";
 // import { useState } from "react";
 // import AutoFillInput from "../auto-fill-input/auto-fill-input";
 
 function TopMenu() {
-  const ordersToShow = useSelector(selectOrders);
+  const location = useLocation();
+
+  const orders = useSelector(selectOrders);
+  const searchedOrders = useSelector(selectSearchedOrders);
+
+  const currentUrl = location.pathname.split("/").pop();
+
+  const ordersToShow =
+    currentUrl === "search-results" ? searchedOrders : orders;
+
+  // const pathLogin = currentUrl === "login" ? true : orders;
+
+  // const pathSignUp = currentUrl === "signUp" ? searchedOrders : orders;
 
   //   var autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
   //     language: 'en',

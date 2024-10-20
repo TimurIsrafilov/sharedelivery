@@ -6,10 +6,10 @@ import StarRating from "../star-rating/star-rating";
 import styles from "./detailed-order.module.css";
 
 import arrow_back_icon from "../../images/arrow_back_icon.svg";
-import like_icon from "../../images/like_icon2.svg";
-import like_icon_active from "../../images/like_icon_active.svg";
+import like_shifted_icon from "../../images/like_shifted_icon.svg";
+import like_shifted_icon_active from "../../images/like_shifted_icon_active.svg";
 
-import { FROM, SENDER, TO } from "../../utils/constants";
+import { COMMON_SEARCH, FROM, SENDER, TO } from "../../utils/constants";
 
 import { selectOrder } from "../../services/order/reducer";
 import { useState } from "react";
@@ -27,7 +27,7 @@ function DetailedOrder(
   const orderToShow = useSelector(selectOrder);
 
   const handleBackClick = () => {
-    navigate("/");
+    navigate(-1);
   };
 
   const handleLikeClick = () => {
@@ -62,8 +62,10 @@ function DetailedOrder(
               >
                 <img
                   className={styles.detailed_order__icon}
-                  src={likeStatus ? like_icon : like_icon_active}
-                  alt="like_icon"
+                  src={
+                    likeStatus ? like_shifted_icon : like_shifted_icon_active
+                  }
+                  alt="like_shifted_icon"
                 />
               </button>
             </div>

@@ -12,8 +12,8 @@ import truck_icon from "../../images/truck_icon.svg";
 import car_icon from "../../images/car_icon.svg";
 import motoroller_icon from "../../images/motoroller_icon.svg";
 
-import like_icon from "../../images/like_icon2.svg";
-import like_icon_active from "../../images/like_icon_active.svg";
+import like_shifted_icon from "../../images/like_shifted_icon.svg";
+import like_shifted_icon_active from "../../images/like_shifted_icon_active.svg";
 
 // import { TypeOrderInfo } from "../../types/types";
 
@@ -181,8 +181,8 @@ function OrderCard({ item }) {
       >
         <img
           className={styles.order_card__like_icon}
-          src={likeStatus ? like_icon : like_icon_active}
-          alt="like_icon"
+          src={likeStatus ? like_shifted_icon : like_shifted_icon_active}
+          alt="like_shifted_icon"
         />
       </button>
     </div>
