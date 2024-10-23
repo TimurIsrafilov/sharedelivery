@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/sharedelivery/static/css/main.b5e0fd2c.css",
-    "main.js": "/sharedelivery/static/js/main.5bf82bd8.js",
+    "main.css": "/sharedelivery/static/css/main.95670487.css",
+    "main.js": "/sharedelivery/static/js/main.c75b1b84.js",
     "static/js/453.144c4b78.chunk.js": "/sharedelivery/static/js/453.144c4b78.chunk.js",
     "static/media/user_pic.png": "/sharedelivery/static/media/user_pic.4386e740f733f6d86d80.png",
     "static/media/Robotobold.woff": "/sharedelivery/static/media/Robotobold.1e0c22679977ac02c8f6.woff",
@@ -16,6 +16,7 @@
     "static/media/current_icon_active.svg": "/sharedelivery/static/media/current_icon_active.a00459c76ba26afe431d9d61ca5025d3.svg",
     "static/media/new_order_icon.svg": "/sharedelivery/static/media/new_order_icon.9eb689943f2ff4dfe22238f4383cfa20.svg",
     "static/media/motoroller_icon.svg": "/sharedelivery/static/media/motoroller_icon.a7748f7a3bbf4f418218ca8c3ae64919.svg",
+    "static/media/motoroller_icon_dark.svg": "/sharedelivery/static/media/motoroller_icon_dark.f61354a36f83c9ebc6163adf295c5b21.svg",
     "static/media/truck_icon_dark.svg": "/sharedelivery/static/media/truck_icon_dark.c35ca1df3a1dc5d239f7f0e5f6b118de.svg",
     "static/media/truck_icon.svg": "/sharedelivery/static/media/truck_icon.abb41a41205420b839b9d5c782662e9d.svg",
     "static/media/delivered_orders_icon.svg": "/sharedelivery/static/media/delivered_orders_icon.2d667c8205a31f850f3c1a1210867ae7.svg",
@@ -24,6 +25,7 @@
     "static/media/support_icon_active.svg": "/sharedelivery/static/media/support_icon_active.3074f5056d3cfdcc7571f7245106a1be.svg",
     "static/media/support_icon.svg": "/sharedelivery/static/media/support_icon.14104c0c5ca332e69da2ea47907d2b44.svg",
     "static/media/car_icon.svg": "/sharedelivery/static/media/car_icon.b9f39edcea0da01263c6993146a82d9d.svg",
+    "static/media/car_icon_dark.svg": "/sharedelivery/static/media/car_icon_dark.c90f7a143eafb2ce7952b2f0f97a3d56.svg",
     "static/media/delete_icon.svg": "/sharedelivery/static/media/delete_icon.696421c632c6d221a75825c39c418095.svg",
     "static/media/card_icon.svg": "/sharedelivery/static/media/card_icon.fea1ba2758907133baeb55c1fbd8c066.svg",
     "static/media/search_icon.svg": "/sharedelivery/static/media/search_icon.3cea463f554900197a439e9bfd1f4cd4.svg",
@@ -43,12 +45,12 @@
     "static/media/arrow_icon.svg": "/sharedelivery/static/media/arrow_icon.be78c5098114c094ac7c6a0356ca5691.svg",
     "static/media/point_b_icon.svg": "/sharedelivery/static/media/point_b_icon.df5dd1d035c49f357eeef30616c5964a.svg",
     "static/media/point_a_icon.svg": "/sharedelivery/static/media/point_a_icon.5ee309d402f8620932480c0e77611e4c.svg",
-    "main.b5e0fd2c.css.map": "/sharedelivery/static/css/main.b5e0fd2c.css.map",
-    "main.5bf82bd8.js.map": "/sharedelivery/static/js/main.5bf82bd8.js.map",
+    "main.95670487.css.map": "/sharedelivery/static/css/main.95670487.css.map",
+    "main.c75b1b84.js.map": "/sharedelivery/static/js/main.c75b1b84.js.map",
     "453.144c4b78.chunk.js.map": "/sharedelivery/static/js/453.144c4b78.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b5e0fd2c.css",
-    "static/js/main.5bf82bd8.js"
+    "static/css/main.95670487.css",
+    "static/js/main.c75b1b84.js"
   ]
 }
