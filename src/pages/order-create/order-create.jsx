@@ -9,13 +9,16 @@ import {
   DatePicker,
   Form,
   Input,
+  Radio,
   Select,
   Space,
   TimePicker,
 } from "antd";
 
 import truck_icon_dark from "../../images/truck_icon_dark.svg";
-import new_order_icon from "../../images/new_order_icon.svg";
+import car_icon_dark from "../../images/car_icon_dark.svg";
+import motoroller_icon_dark from "../../images/motoroller_icon_dark.svg";
+
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../services/user/actions";
 import { useNavigate } from "react-router-dom";
@@ -346,19 +349,90 @@ function OrderCreate() {
             </Form.Item>
           </div>
 
-          <p>Attach cargo photo</p>
+          <p className={styles.order_create__photo_title}>Attach cargo photo</p>
 
-          <ImgCrop rotationSlider>
-            <Upload
-              action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-              listType="picture-card"
-              fileList={fileList}
-              onChange={onPhotoChange}
-              onPreview={onPreview}
-            >
-              {fileList.length < 3 && "+ Upload Photo"}
-            </Upload>
-          </ImgCrop>
+          <Form.Item
+            name="photo"
+            rules={[
+              {
+                required: true,
+                message: "Add photo",
+              },
+            ]}
+          >
+            <ImgCrop rotationSlider>
+              <Upload
+                action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+                listType="picture-card"
+                fileList={fileList}
+                onChange={onPhotoChange}
+                onPreview={onPreview}
+              >
+                {fileList.length < 1 && "+ Upload Photo"}
+              </Upload>
+            </ImgCrop>
+          </Form.Item>
+
+          {/* <Form.Item
+            name="photo"
+            rules={[
+              {
+                required: true,
+                message: "Add photo",
+              },
+            ]}
+          ></Form.Item> */}
+
+          <div className={styles.order_create__transport_container}>
+            <h4 className={styles.order_create__input_title}>Type of transport</h4>
+            <div className={styles.order_create__common_container}>
+              <p className={styles.order_create__common_title}>Select the transport that can be used for your delivery</p>
+              <div className={styles.order_create__icons_radio_container}>
+                <div className={styles.order_create__icons_container}>
+                  <div className={styles.order_create__icon_container}>
+                    <img
+                      className={styles.order_create__order_icon}
+                      src={truck_icon_dark}
+                      alt="truck_icon_dark"
+                    />
+                    <p className={styles.order_create__icon_title}>Truck</p>
+                  </div>
+
+                  <div className={styles.order_create__icon_container}>
+                    <img
+                      className={styles.order_create__order_icon}
+                      src={car_icon_dark}
+                      alt="new_order_icon"
+                    />
+                    <p className={styles.order_create__icon_title}>Car</p>
+                  </div>
+
+                  <div className={styles.order_create__icon_container}>
+                    <img
+                      className={styles.order_create__order_icon}
+                      src={motoroller_icon_dark}
+                      alt="new_order_icon"
+                    />
+                    <p className={styles.order_create__icon_title}>
+                      Motorbike, bike, bicycle
+                    </p>
+                  </div>
+                </div>
+
+                <div className={styles.order_create__icons_container}>
+                  <Form.Item name="transport">
+                    <Radio.Group
+                      className={styles.order_create__radio_container}
+                    >
+                      <Radio value="truck"> </Radio>
+                      <Radio value="car"> </Radio>
+                      <Radio value="motorbike"> </Radio>
+                    </Radio.Group>
+                  </Form.Item>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className={styles.order_create__button_container}> </div>
           <Form.Item>

@@ -163,10 +163,14 @@ function App() {
             element={<OnlyAuth component={<CompletedOrders />} />}
           />
 
-          <Route
+         <Route
             path={ORDER_CREATE}
             element={<OnlyAuth component={<OrderCreate />} />}
-          />
+          /> 
+
+{/* <Route
+            path={ORDER_CREATE}  element={<OrderCreate /> }
+          /> */}
 
           <Route
             path={PAYMENT_DETAILS}

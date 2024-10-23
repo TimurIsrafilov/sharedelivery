@@ -87,27 +87,47 @@
     z-index: 2;
 }
 
-.signup__icons_container {
+
+.signup__icons_radio_container {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 10px;
     border: 1px solid var(--dark-grey);
     border-radius: 5px;
     margin: 0;
-    padding: 20px 20px 4px 16px;
+    padding: 20px 0px 0px 16px;
 
 
 }
 
-.signup__icon_checkbox_container {
+.signup__icons_container {
     display: flex;
-    justify-content: space-between;
-    margin: 0 0 8px 0;
+    flex-direction: column;
+    gap: 10px;
+    /* border: 1px solid var(--dark-grey);
+    border-radius: 5px; */
+    margin: 0;
     padding: 0;
+
+
 }
+
+.signup__radio_container {
+    display: flex;
+    flex-direction: column;
+    gap: 14px
+}
+
+
 
 .signup__icon_container {
     display: flex;
     align-items: center;
     width: 92px;
     justify-content: space-between;
+    margin: 0;
+    padding: 0;
 }
 
 .signup__order_icon {}
@@ -129,5 +149,12 @@
 
 .ant-form-item {
     margin: 0;
+    padding: 0;
+}
+
+.signup__checkbox {
+    display: flex;
+    justify-content: center;
+    margin: 6px 0;
     padding: 0;
 }

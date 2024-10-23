@@ -70,7 +70,7 @@ export const signup = (e) => {
       phone: `+351 ${e.phone}`,
       email: e.email,
       password: e.password,
-      role: "sender",
+      role: e.role,
     }),
   }).then(getResponse);
 };

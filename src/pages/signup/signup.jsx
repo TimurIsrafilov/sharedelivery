@@ -2,7 +2,7 @@ import CommonForm from "../../components/common-form/common-form";
 import SubmitButton from "../../components/submit-button/submit-button";
 import styles from "./signup.module.css";
 
-import { Button, Checkbox, Form, Input, Select, Space } from "antd";
+import { Button, Checkbox, Form, Input, Radio, Select, Space } from "antd";
 
 import truck_icon_dark from "../../images/truck_icon_dark.svg";
 import new_order_icon from "../../images/new_order_icon.svg";
@@ -201,7 +201,7 @@ function Signup() {
             </Form.Item>
           </div>
 
-          <div className={styles.signup__role_container}>
+          {/* <div className={styles.signup__role_container}>
             <h4 className={styles.signup__title}>I want to be</h4>
 
             <div className={styles.signup__icons_container}>
@@ -223,7 +223,7 @@ function Signup() {
                       validator: (_, value) =>
                         value
                           ? Promise.resolve()
-                          : Promise.reject(new Error("")),
+                          : Promise.reject(new Error("Should choose one option")),
                     },
                   ]}
                   // {...tailFormItemLayout}
@@ -253,7 +253,7 @@ function Signup() {
                       validator: (_, value) =>
                         value
                           ? Promise.resolve()
-                          : Promise.reject(new Error("")),
+                          : Promise.reject(new Error("Should choose one option")),
                     },
                   ]}
                   // {...tailFormItemLayout}
@@ -265,9 +265,44 @@ function Signup() {
                 </Form.Item>
               </div>
             </div>
+          </div> */}
+
+          <div className={styles.signup__role_container}>
+            <h4 className={styles.signup__input_title}>I want to be</h4>
+            <div className={styles.signup__icons_radio_container}>
+              <div className={styles.signup__icons_container}>
+                <div className={styles.signup__icon_container}>
+                  <img
+                    className={styles.signup__order_icon}
+                    src={truck_icon_dark}
+                    alt="truck_icon_dark"
+                  />
+                  <p className={styles.signup__icon_title}>Courier</p>
+                </div>
+
+                <div className={styles.signup__icon_container}>
+                  <img
+                    className={styles.signup__order_icon}
+                    src={new_order_icon}
+                    alt="new_order_icon"
+                  />
+                  <p className={styles.signup__icon_title}>Sender</p>
+                </div>
+              </div>
+
+              <div className={styles.signup__icons_container}>
+                <Form.Item name="role">
+                  <Radio.Group className={styles.signup__radio_container}>
+                    <Radio value="courier"> </Radio>
+                    <Radio value="sender"> </Radio>
+                  </Radio.Group>
+                </Form.Item>
+              </div>
+            </div>
           </div>
 
           <Form.Item
+            className={styles.signup__checkbox}
             name="agreement"
             valuePropName="checked"
             rules={[
