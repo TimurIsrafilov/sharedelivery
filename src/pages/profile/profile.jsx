@@ -33,6 +33,7 @@ function Profile() {
   const dispatch = useDispatch();
 
   const userToShow = useSelector(selectUser);
+  const role = userToShow.type;
 
   const paymentData = [
     {
@@ -42,12 +43,15 @@ function Profile() {
     },
   ];
 
-  const ordersData = [
+  const favoriteOrdersData = [
     {
       icon: like_icon,
       title: "Favorite orders",
       linkTo: FAVORITE_ORDERS,
     },
+  ];
+
+  const ordersData = [
     {
       icon: current_icon,
       title: "Current orders",
@@ -121,6 +125,19 @@ function Profile() {
           </Link>
         ))}
       </div>
+
+      {role === "courier" ? (
+        <div className={styles.profile__menu_points}>
+          {favoriteOrdersData.map((i) => (
+            <Link to={i.linkTo} className={styles.profile__menu_link}>
+              <MenuComponent icon={i.icon} title={i.title} />
+            </Link>
+          ))}
+        </div>
+      ) : (
+        ""
+      )}
+
       <div className={styles.profile__menu_points}>
         {ordersData.map((i) => (
           <Link to={i.linkTo} className={styles.profile__menu_link}>
@@ -128,6 +145,7 @@ function Profile() {
           </Link>
         ))}
       </div>
+
       <div className={styles.profile__menu_points}>
         {serviceData.map((i) => (
           <Link to={i.linkTo} className={styles.profile__menu_link}>

@@ -27,6 +27,7 @@ export const getOrderInfo = (id) => {
       Accept: "application/json",
       "Content-Type": "application/json",
       // "Access-Control-Allow-Origin": `${BASE_URL}`,
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },
   }).then(getResponse);
 };
@@ -37,6 +38,7 @@ export const getOrdersInfo = () => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },
   }).then(getResponse);
 };
@@ -47,11 +49,45 @@ export const getSearchedOrdersInfo = (e) => {
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },
     body: JSON.stringify({
       from_town: e.from,
       to_town: e.to,
       from_datetime: e.date,
+    }),
+  }).then(getResponse);
+};
+
+export const createOrder = (e, fromData, toData) => {
+  return fetch(`${BASE_URL}${ORDERS}`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+    body: JSON.stringify({
+      from_address: e.from_address,
+      to_address: e.to_address,
+      from_date: `${e.from_date} ${e.from_time}`,
+      to_date: `${e.to_date} ${e.to_time}`,
+      // from_time: e.from_time,
+      // to_time: e.to_time,
+      price: e.price,
+      short_description: e.short_description,
+      full_description: e.full_description,
+      // photo: e.photo,
+      transport: e.transport,
+
+      from_town: fromData?.place,
+      from_street: fromData?.street,
+      from_house: fromData?.address,
+      from_zip: fromData?.postcode,
+      to_town: toData?.place,
+      to_street: toData?.street,
+      to_house: toData?.address,
+      to_zip: toData?.postcode,
     }),
   }).then(getResponse);
 };
@@ -67,7 +103,7 @@ export const signup = (e) => {
       first_name: e.name,
       middle_name: e.second_name,
       last_name: e.surname,
-      phone: `+351 ${e.phone}`,
+      phone: `+351${e.phone}`,
       email: e.email,
       password: e.password,
       role: e.role,

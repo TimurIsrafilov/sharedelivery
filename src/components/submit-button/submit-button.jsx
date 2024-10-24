@@ -3,7 +3,7 @@ import styles from "./submit-button.module.css";
 import { Button, ConfigProvider, Form } from "antd";
 import { useEffect, useState } from "react";
 
-function SubmitButton({ type, title, disabled, form, children }) {
+function SubmitButton({ type, title, disabled, form, children, fileList }) {
   const blueButton = {
     components: {
       Button: {
@@ -51,7 +51,7 @@ function SubmitButton({ type, title, disabled, form, children }) {
       })
       .then(() => setSubmittable(true))
       .catch(() => setSubmittable(false));
-  }, [form, values]);
+  }, [form, values, fileList]);
 
   return (
     <ConfigProvider theme={buttonColor}>
@@ -60,7 +60,6 @@ function SubmitButton({ type, title, disabled, form, children }) {
         htmlType="submit"
         size="large"
         disabled={!submittable}
-
         block={true}
       >
         {title}

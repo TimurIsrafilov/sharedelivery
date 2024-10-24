@@ -19,6 +19,8 @@ import truck_icon_dark from "../../images/truck_icon_dark.svg";
 import car_icon_dark from "../../images/car_icon_dark.svg";
 import motoroller_icon_dark from "../../images/motoroller_icon_dark.svg";
 
+import photocam_icon from "../../images/photocam_icon.svg";
+
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../services/user/actions";
 import { useNavigate } from "react-router-dom";
@@ -27,11 +29,12 @@ import TopMenuUnlogin from "../../components/top-menu-unlogin/top-menu-unlogin";
 import { setIsUserAuthChecked } from "../../services/user/reducer";
 
 import * as api from "../../utils/mapbox_api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextArea from "antd/es/input/TextArea";
 
 import { Upload } from "antd";
 import ImgCrop from "antd-img-crop";
+import { createOrder } from "../../utils/api";
 
 function OrderCreate() {
   const navigate = useNavigate();
@@ -40,6 +43,8 @@ function OrderCreate() {
   const [form] = Form.useForm();
   const [fromOptions, setFromOptions] = useState([]);
   const [toOptions, setToOptions] = useState([]);
+  const [fromData, setFromData] = useState([]);
+  const [toData, setToData] = useState([]);
 
   const { Option } = Select;
 
@@ -49,6 +54,10 @@ function OrderCreate() {
       .then((res) => {
         const x = res.features.map((item) => item.properties.full_address);
         // const x = res.features?.map((item) => item?.properties?.context?.place);
+
+        const z = res.features.map((item) => item.properties.context);
+        setFromData(z);
+
         let y = [];
         y = x.map((item) => ({ value: item }));
         setFromOptions(y);
@@ -61,6 +70,10 @@ function OrderCreate() {
       .getPlaces(query)
       .then((res) => {
         const x = res.features.map((item) => item.properties.full_address);
+
+        const z = res.features.map((item) => item.properties.context);
+        setToData(z);
+
         let y = [];
         y = x.map((item) => ({ value: item }));
         setToOptions(y);
@@ -68,9 +81,21 @@ function OrderCreate() {
       .catch((err) => console.log(`Ошибка.....: ${err}`));
   }
 
-  function handleFormSubmit(e) {
-    // что делаем после того как все заполнено
-    // navigate(куда-то отправляем);
+  // function handleFormSubmit(e) {
+  //   // что делаем после того как все заполнено
+  //   // navigate(куда-то отправляем);
+  // }
+
+  function handleFormSubmit(e, fromData, toData) {
+    dispatch(createOrder(e, fromData, toData))
+    // .then((res) => {
+      // if (res.payload.success) {
+      //   localStorage.setItem("accessToken", res.payload.access_token);
+      //   localStorage.setItem("refreshToken", res.payload.refresh_token);
+      //   dispatch(setIsUserAuthChecked(true));
+      //   navigate(PROFILE, { replace: true });
+      // }
+    // });
   }
 
   const onChange = (date, dateString) => {
@@ -137,16 +162,31 @@ function OrderCreate() {
   //   },
   // ];
 
+  const format = "HH:mm";
+
+  const normFile = (e) => {
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e?.fileList;
+  };
+
+
+
   return (
     <div className={styles.order_create}>
-      <TopMenuUnlogin />
+      <h3 className={styles.order_create__title}>New order</h3>
       <div className={styles.order_create__form}>
         <Form
           form={form}
           name="register"
           layout="vertical"
-          autoComplete="off"
-          onFinish={handleFormSubmit}
+          // autoComplete="off"
+          // onFinish={handleFormSubmit(fromData, toData)}
+
+          onFinish={(e, fromData, toData) => handleFormSubmit(e, fromData, toData)}
+
+
           initialValues={{
             prefix: "351",
           }}
@@ -154,7 +194,7 @@ function OrderCreate() {
           <div className={styles.order_create__container}>
             <h4 className={styles.order_create__input_title}>From address</h4>
             <Form.Item
-              name="from-address"
+              name="from_address"
               rules={[
                 {
                   required: true,
@@ -169,7 +209,7 @@ function OrderCreate() {
                 placeholder="City"
                 size="large"
                 notFoundContent="valid city is required"
-                singleItemHeightLG={50}
+                // singleItemHeightLG={50}
               />
             </Form.Item>
           </div>
@@ -177,7 +217,7 @@ function OrderCreate() {
           <div className={styles.order_create__container}>
             <h4 className={styles.order_create__input_title}>To address</h4>
             <Form.Item
-              name="to-address"
+              name="to_address"
               rules={[
                 {
                   required: true,
@@ -202,7 +242,7 @@ function OrderCreate() {
                 Cargo pick up date
               </h4>
               <Form.Item
-                name="from-date"
+                name="from_date"
                 rules={[
                   {
                     required: true,
@@ -223,7 +263,7 @@ function OrderCreate() {
                 Delivery date
               </h4>
               <Form.Item
-                name="to-date"
+                name="to_date"
                 rules={[
                   {
                     required: true,
@@ -244,7 +284,7 @@ function OrderCreate() {
             <div className={styles.order_create__container}>
               <h4 className={styles.order_create__input_title}>Pick up time</h4>
               <Form.Item
-                name="from-time"
+                name="from_time"
                 rules={[
                   {
                     required: true,
@@ -254,6 +294,7 @@ function OrderCreate() {
               >
                 <TimePicker
                   onChange={onChange}
+                  format={format}
                   placeholder="HH:MM"
                   size="large"
                 />
@@ -265,7 +306,7 @@ function OrderCreate() {
                 Delivery time
               </h4>
               <Form.Item
-                name="to-time"
+                name="to_time"
                 rules={[
                   {
                     required: true,
@@ -275,6 +316,7 @@ function OrderCreate() {
               >
                 <TimePicker
                   onChange={onChange}
+                  format={format}
                   placeholder="HH:MM"
                   size="large"
                 />
@@ -308,7 +350,7 @@ function OrderCreate() {
               Short description
             </h4>
             <Form.Item
-              name="short-description"
+              name="short_description"
               rules={[
                 {
                   required: true,
@@ -331,7 +373,7 @@ function OrderCreate() {
               Full description
             </h4>
             <Form.Item
-              name="full-description"
+              name="full_description"
               rules={[
                 {
                   required: true,
@@ -349,26 +391,65 @@ function OrderCreate() {
             </Form.Item>
           </div>
 
-          <p className={styles.order_create__photo_title}>Attach cargo photo</p>
+          {/* <p className={styles.order_create__photo_title}>Attach cargo photo</p> */}
+
+          {/* <Form.Item
+            name="photo"
+            // rules={[
+            //   {
+            //     required: true,
+            //     message: "Add photo",
+            //   },
+            // ]}
+          >
+            <ImgCrop rotationSlider>
+              <Upload
+                // action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+                listType="picture-card"
+                fileList={fileList}
+                onChange={onPhotoChange}
+                onPreview={onPreview}
+              >
+                {fileList.length < 2 && "+ Upload Photo"}
+              </Upload>
+            </ImgCrop>
+          </Form.Item> */}
 
           <Form.Item
             name="photo"
+            label="Attach cargo photo"
+            valuePropName="fileList"
+            getValueFromEvent={normFile}
             rules={[
               {
-                required: true,
+                required: fileList.length > 0 ? false : true,
                 message: "Add photo",
               },
             ]}
           >
             <ImgCrop rotationSlider>
               <Upload
-                action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+                action="/upload.do"
                 listType="picture-card"
                 fileList={fileList}
                 onChange={onPhotoChange}
                 onPreview={onPreview}
               >
-                {fileList.length < 1 && "+ Upload Photo"}
+                {/* <button style={{ border: 0, background: "none" }} type="button">
+                <img
+                  className={styles.detailed_order__icon}
+                  src={photocam_icon}
+                  alt="photocam_icon"
+                />
+     
+              </button> */}
+                {fileList.length < 4 && (
+                  <img
+                    className={styles.detailed_order__icon}
+                    src={photocam_icon}
+                    alt="photocam_icon"
+                  />
+                )}
               </Upload>
             </ImgCrop>
           </Form.Item>
@@ -384,9 +465,13 @@ function OrderCreate() {
           ></Form.Item> */}
 
           <div className={styles.order_create__transport_container}>
-            <h4 className={styles.order_create__input_title}>Type of transport</h4>
+            <h4 className={styles.order_create__input_title}>
+              Type of transport
+            </h4>
             <div className={styles.order_create__common_container}>
-              <p className={styles.order_create__common_title}>Select the transport that can be used for your delivery</p>
+              <p className={styles.order_create__common_title}>
+                Select the transport that can be used for your delivery
+              </p>
               <div className={styles.order_create__icons_radio_container}>
                 <div className={styles.order_create__icons_container}>
                   <div className={styles.order_create__icon_container}>
@@ -420,7 +505,14 @@ function OrderCreate() {
                 </div>
 
                 <div className={styles.order_create__icons_container}>
-                  <Form.Item name="transport">
+                  <Form.Item
+                    name="transport"
+                    rules={[
+                      {
+                        required: true,
+                      },
+                    ]}
+                  >
                     <Radio.Group
                       className={styles.order_create__radio_container}
                     >
@@ -439,7 +531,8 @@ function OrderCreate() {
             <SubmitButton
               form={form}
               type={"blue"}
-              title={"Sign up"}
+              title={"Create order"}
+              fileList={fileList}
             ></SubmitButton>
           </Form.Item>
         </Form>

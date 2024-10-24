@@ -15,16 +15,25 @@ import like_icon_active from "../../images/like_icon_active.svg";
 import support_icon from "../../images/support_icon.svg";
 import support_icon_active from "../../images/support_icon_active.svg";
 
+import new_order_icon from "../../images/new_order_icon.svg";
+import new_order_icon_active from "../../images/new_order_icon_active.svg";
+
+import { selectUser } from "../../services/user/reducer";
+
 import { NavLink } from "react-router-dom";
 import {
   CURRENT_ORDERS,
   FAVORITE_ORDERS,
   MESSAGES,
+  ORDER_CREATE,
   SEARCH_ORDERS,
   SUPPORT,
 } from "../../utils/constants";
+import { useSelector } from "react-redux";
 
 function Footer() {
+  const userToShow = useSelector(selectUser);
+  const role = userToShow?.type;
   // const navigate = useNavigate();
 
   // const handleSearchOrdersClick = () => {
@@ -45,29 +54,61 @@ function Footer() {
 
   return (
     <footer className={styles.footer}>
-      <NavLink to={SEARCH_ORDERS} className={styles.footer__icons_container}>
-        {({ isActive }) =>
-          isActive ? (
-            <>
-              <img
-                className={styles.footer__icon}
-                src={search_icon_active}
-                alt="search_icon_active"
-              />
-              <h3 className={styles.footer__icon_title_active}>Search</h3>
-            </>
-          ) : (
-            <>
-              <img
-                className={styles.footer__icon}
-                src={search_icon}
-                alt="search_icon"
-              />
-              <h3 className={styles.footer__icon_title}>Search</h3>
-            </>
-          )
-        }
-      </NavLink>
+      {role !== "courier" ? (
+        <NavLink to={ORDER_CREATE} className={styles.footer__icons_container}>
+          {({ isActive }) =>
+            isActive ? (
+              <>
+                <img
+                  className={styles.footer__icon}
+                  src={new_order_icon_active}
+                  alt="search_icon_active"
+                />
+                <h3 className={styles.footer__icon_title_active}>New order</h3>
+              </>
+            ) : (
+              <>
+                <img
+                  className={styles.footer__icon}
+                  src={new_order_icon}
+                  alt="search_icon"
+                />
+                <h3 className={styles.footer__icon_title}>New order</h3>
+              </>
+            )
+          }
+        </NavLink>
+      ) : (
+        ""
+      )}
+
+      {role === "courier" ? (
+        <NavLink to={SEARCH_ORDERS} className={styles.footer__icons_container}>
+          {({ isActive }) =>
+            isActive ? (
+              <>
+                <img
+                  className={styles.footer__icon}
+                  src={search_icon_active}
+                  alt="search_icon_active"
+                />
+                <h3 className={styles.footer__icon_title_active}>Search</h3>
+              </>
+            ) : (
+              <>
+                <img
+                  className={styles.footer__icon}
+                  src={search_icon}
+                  alt="search_icon"
+                />
+                <h3 className={styles.footer__icon_title}>Search</h3>
+              </>
+            )
+          }
+        </NavLink>
+      ) : (
+        ""
+      )}
 
       <NavLink to={CURRENT_ORDERS} className={styles.footer__icons_container}>
         {({ isActive }) =>
@@ -119,31 +160,38 @@ function Footer() {
         }
       </NavLink>
 
-      <NavLink to={FAVORITE_ORDERS} className={styles.footer__icons_container}>
-        {({ isActive }) =>
-          isActive ? (
-            <>
-              <img
-                className={styles.footer__icon}
-                src={like_icon_active}
-                alt="like_icon_active"
-              />
-              <h3 className={styles.footer__icon_title_active}>
-                Favorite orders
-              </h3>
-            </>
-          ) : (
-            <>
-              <img
-                className={styles.footer__icon}
-                src={like_icon}
-                alt="like_icon"
-              />
-              <h3 className={styles.footer__icon_title}>Favorite orders</h3>
-            </>
-          )
-        }
-      </NavLink>
+      {role === "courier" ? (
+        <NavLink
+          to={FAVORITE_ORDERS}
+          className={styles.footer__icons_container}
+        >
+          {({ isActive }) =>
+            isActive ? (
+              <>
+                <img
+                  className={styles.footer__icon}
+                  src={like_icon_active}
+                  alt="like_icon_active"
+                />
+                <h3 className={styles.footer__icon_title_active}>
+                  Favorite orders
+                </h3>
+              </>
+            ) : (
+              <>
+                <img
+                  className={styles.footer__icon}
+                  src={like_icon}
+                  alt="like_icon"
+                />
+                <h3 className={styles.footer__icon_title}>Favorite orders</h3>
+              </>
+            )
+          }
+        </NavLink>
+      ) : (
+        ""
+      )}
 
       <NavLink to={SUPPORT} className={styles.footer__icons_container}>
         {({ isActive }) =>

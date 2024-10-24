@@ -291,7 +291,14 @@ function Signup() {
               </div>
 
               <div className={styles.signup__icons_container}>
-                <Form.Item name="role">
+                <Form.Item
+                  name="role"
+                  rules={[
+                    {
+                      required: true,
+                    },
+                  ]}
+                >
                   <Radio.Group className={styles.signup__radio_container}>
                     <Radio value="courier"> </Radio>
                     <Radio value="sender"> </Radio>
