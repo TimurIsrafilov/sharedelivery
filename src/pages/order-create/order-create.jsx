@@ -35,6 +35,7 @@ import TextArea from "antd/es/input/TextArea";
 import { Upload } from "antd";
 import ImgCrop from "antd-img-crop";
 import { createOrder } from "../../utils/api";
+import { addFromData, addToData } from "../../services/create-order/reducer";
 
 function OrderCreate() {
   const navigate = useNavigate();
@@ -48,15 +49,23 @@ function OrderCreate() {
 
   const { Option } = Select;
 
-  function handFromleInputChange(query) {
-    api
+  function handFromleInputChange(query) { 
+    api 
       .getPlaces(query)
       .then((res) => {
+
+        const s = res.features.map((item) => item.properties);
+
+
         const x = res.features.map((item) => item.properties.full_address);
         // const x = res.features?.map((item) => item?.properties?.context?.place);
 
-        const z = res.features.map((item) => item.properties.context);
-        setFromData(z);
+        // const z = res.features.map((item) => item.properties.context);
+        // let w = [];
+        // w = z.map((item) => ({ value: item }));
+
+        setFromData(s);
+        // dispatch(addFromData(s));
 
         let y = [];
         y = x.map((item) => ({ value: item }));
@@ -69,10 +78,14 @@ function OrderCreate() {
     api
       .getPlaces(query)
       .then((res) => {
+
+        const s = res.features.map((item) => item.properties);
+
         const x = res.features.map((item) => item.properties.full_address);
 
-        const z = res.features.map((item) => item.properties.context);
-        setToData(z);
+        // const z = res.features.map((item) => item.properties.context);
+        setToData(s);
+        // dispatch(addToData(res.features.properties));
 
         let y = [];
         y = x.map((item) => ({ value: item }));
@@ -86,15 +99,19 @@ function OrderCreate() {
   //   // navigate(куда-то отправляем);
   // }
 
-  function handleFormSubmit(e, fromData, toData) {
-    dispatch(createOrder(e, fromData, toData))
+  function handleFormSubmit(e) {
+    const fromDetailData = fromData.find((i) => e.from_address === i.full_address      )
+    const toDetailData = toData.find((i) => e.to_address === i.full_address      )
+
+
+    dispatch(createOrder(e, fromDetailData, toDetailData));
     // .then((res) => {
-      // if (res.payload.success) {
-      //   localStorage.setItem("accessToken", res.payload.access_token);
-      //   localStorage.setItem("refreshToken", res.payload.refresh_token);
-      //   dispatch(setIsUserAuthChecked(true));
-      //   navigate(PROFILE, { replace: true });
-      // }
+    // if (res.payload.success) {
+    //   localStorage.setItem("accessToken", res.payload.access_token);
+    //   localStorage.setItem("refreshToken", res.payload.refresh_token);
+    //   dispatch(setIsUserAuthChecked(true));
+    //   navigate(PROFILE, { replace: true });
+    // }
     // });
   }
 
@@ -171,8 +188,6 @@ function OrderCreate() {
     return e?.fileList;
   };
 
-
-
   return (
     <div className={styles.order_create}>
       <h3 className={styles.order_create__title}>New order</h3>
@@ -184,9 +199,9 @@ function OrderCreate() {
           // autoComplete="off"
           // onFinish={handleFormSubmit(fromData, toData)}
 
-          onFinish={(e, fromData, toData) => handleFormSubmit(e, fromData, toData)}
-
-
+          onFinish={(e, fromData, toData) =>
+            handleFormSubmit(e, fromData, toData)
+          }
           initialValues={{
             prefix: "351",
           }}
@@ -239,7 +254,7 @@ function OrderCreate() {
           <div className={styles.order_create__date_container}>
             <div className={styles.order_create__container}>
               <h4 className={styles.order_create__input_title}>
-                Cargo pick up date
+                Cargo pick up date and time
               </h4>
               <Form.Item
                 name="from_date"
@@ -251,6 +266,7 @@ function OrderCreate() {
                 ]}
               >
                 <DatePicker
+                  showTime
                   onChange={onChange}
                   placeholder="Select date"
                   size="large"
@@ -260,7 +276,7 @@ function OrderCreate() {
 
             <div className={styles.order_create__container}>
               <h4 className={styles.order_create__input_title}>
-                Delivery date
+                Delivery date and time
               </h4>
               <Form.Item
                 name="to_date"
@@ -272,6 +288,7 @@ function OrderCreate() {
                 ]}
               >
                 <DatePicker
+                  showTime
                   onChange={onChange}
                   placeholder="Select date"
                   size="large"
@@ -280,7 +297,7 @@ function OrderCreate() {
             </div>
           </div>
 
-          <div className={styles.order_create__date_container}>
+          {/* <div className={styles.order_create__date_container}>
             <div className={styles.order_create__container}>
               <h4 className={styles.order_create__input_title}>Pick up time</h4>
               <Form.Item
@@ -299,9 +316,9 @@ function OrderCreate() {
                   size="large"
                 />
               </Form.Item>
-            </div>
+            </div> */}
 
-            <div className={styles.order_create__container}>
+          {/* <div className={styles.order_create__container}>
               <h4 className={styles.order_create__input_title}>
                 Delivery time
               </h4>
@@ -322,7 +339,7 @@ function OrderCreate() {
                 />
               </Form.Item>
             </div>
-          </div>
+          </div> */}
 
           <div className={styles.order_create__container}>
             <h4 className={styles.order_create__input_title}>Price</h4>

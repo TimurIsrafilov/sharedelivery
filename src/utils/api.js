@@ -68,26 +68,40 @@ export const createOrder = (e, fromData, toData) => {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },
     body: JSON.stringify({
-      from_address: e.from_address,
-      to_address: e.to_address,
-      from_date: `${e.from_date} ${e.from_time}`,
-      to_date: `${e.to_date} ${e.to_time}`,
-      // from_time: e.from_time,
-      // to_time: e.to_time,
+      // from_datetime: "2024-10-22T13:45:42.000000Z",
+      // to_datetime: "2024-10-22T13:45:42.000000Z",
+
+      from_datetime: e.from_date,
+      to_datetime: e.to_date,
+
+      // from_address: e.from_address,
+      // to_address: e.to_address,
+
+      from_town: fromData?.context?.place ? fromData.context.place.name : "-",
+      from_street: fromData?.context?.street ? fromData?.context?.street?.name : "-",
+      from_house: fromData?.context?.address ? fromData?.context?.address?.name : "-",
+      from_zip: fromData?.context?.postcode ? fromData?.context?.postcode?.name : "-",
+      to_town: toData?.context?.place ? toData?.context?.place?.name : "-",
+      to_street: toData?.context?.street ? toData?.context?.street?.name : "-",
+      to_house: toData?.context?.address ? toData?.context?.address?.name : '-',
+      to_zip: toData?.context?.postcode?.name ? toData?.context?.postcode?.name : '-',
+
+      // from_town: fromData.context.place.name,
+      // from_street: fromData?.context?.street?.name,
+      // from_house: fromData?.context?.address?.name,
+      // from_zip: fromData?.context?.postcode?.name,
+      // to_town: toData?.context?.place?.name,
+      // to_street: toData?.context?.street?.name,
+      // to_house: toData?.context?.address?.name,
+      // to_zip: toData?.context?.postcode?.name,
+
+      to_country: "Portugal",
+
       price: e.price,
       short_description: e.short_description,
-      full_description: e.full_description,
-      // photo: e.photo,
-      transport: e.transport,
-
-      from_town: fromData?.place,
-      from_street: fromData?.street,
-      from_house: fromData?.address,
-      from_zip: fromData?.postcode,
-      to_town: toData?.place,
-      to_street: toData?.street,
-      to_house: toData?.address,
-      to_zip: toData?.postcode,
+      detailed_description: e.full_description,
+      // photos: e.photo,
+      order_type: e.transport,
     }),
   }).then(getResponse);
 };

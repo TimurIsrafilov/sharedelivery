@@ -23,6 +23,8 @@ function SearchResults() {
 
   const ordersToShow = useSelector(selectOrders);
 
+  // const reversed = ordersToShow.reverse()
+
   useEffect(() => {
     dispatch(deleteOrderValue());
     if (ordersToShow === null) {
@@ -30,11 +32,15 @@ function SearchResults() {
     }
   }, [dispatch, ordersToShow]);
 
+  // if (!ordersToShow) {
+  //   return null; // Ждем загрузки данных, пока они не станут доступны
+  // }
+
   return (
     <div className={styles.search_results}>
       <TopMenu />
       <div className={styles.search_results__container}>
-        {ordersToShow?.map((item) => (
+        {ordersToShow?.slice().reverse().map((item) => (
           <OrderCard
             // id={item.id}
             // short_description={item.short_description}

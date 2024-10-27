@@ -3,12 +3,21 @@ import { createOrder } from "./actions";
 
 const initialState = {
   createOrder: null,
+  // fromData: null,
+  // toData: null
 };
 
 export const createOrderSlice = createSlice({
   name: "createOrder",
   initialState,
-  reducers: {},
+  reducers: {
+    // addFromData: (state, action) => {
+    //   state.fromData = action.payload;
+    // },
+    // addToData: (state, action) => {
+    //   state.toData = action.payload;
+    // },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(createOrder.pending, (state) => {
@@ -29,6 +38,9 @@ export const createOrderSlice = createSlice({
 export const selectCreateOrder = (state) => state.createOrder.createOrder;
 export const selectCreateOrderLoading = (state) => state.createOrder.loading;
 export const selectCreateOrderError = (state) => state.createOrder.error;
+
+// export const { addFromData } = createOrderSlice.actions;
+// export const { addToData } = createOrderSlice.actions;
 
 export const reducer = createOrderSlice.reducer;
 

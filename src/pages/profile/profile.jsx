@@ -33,7 +33,7 @@ function Profile() {
   const dispatch = useDispatch();
 
   const userToShow = useSelector(selectUser);
-  const role = userToShow.type;
+  const role = userToShow.role;
 
   const paymentData = [
     {
