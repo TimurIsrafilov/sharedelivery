@@ -446,7 +446,7 @@ function OrderCreate() {
           >
             <ImgCrop rotationSlider>
               <Upload
-                action="/upload.do"
+                action={console.log(fileList)}
                 listType="picture-card"
                 fileList={fileList}
                 onChange={onPhotoChange}
