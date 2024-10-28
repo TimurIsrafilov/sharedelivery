@@ -163,7 +163,7 @@ function OrderCreate() {
   const onDeliveryTypeChange = (checkedValues) => {
     console.log("checked = ", checkedValues);
   };
-  const deliveryOptions = ["Truck", "Car", "Motorbike"];
+  const deliveryOptions = ["Truck", "Car", "Motoroller"];
   // const options = [
   //   {
   //     label: "Truck",
@@ -535,7 +535,7 @@ function OrderCreate() {
                     >
                       <Radio value="truck"> </Radio>
                       <Radio value="car"> </Radio>
-                      <Radio value="motorbike"> </Radio>
+                      <Radio value="motoroller"> </Radio>
                     </Radio.Group>
                   </Form.Item>
                 </div>
