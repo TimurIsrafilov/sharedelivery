@@ -6,12 +6,18 @@ import { Button, Checkbox, Form, Input, Radio, Select, Space } from "antd";
 
 import truck_icon_dark from "../../images/truck_icon_dark.svg";
 import new_order_icon from "../../images/new_order_icon.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../services/user/actions";
 import { useNavigate } from "react-router-dom";
 import { COMMON_SEARCH, LOGIN, PROFILE } from "../../utils/constants";
 import TopMenuUnlogin from "../../components/top-menu-unlogin/top-menu-unlogin";
-import { setIsUserAuthChecked } from "../../services/user/reducer";
+import {
+  selectUserRegisterError,
+  setRegisterError,
+  setIsUserAuthChecked,
+} from "../../services/user/reducer";
+import Error from "../../components/error/error";
+import { useState } from "react";
 
 function Signup() {
   const navigate = useNavigate();
@@ -21,21 +27,43 @@ function Signup() {
 
   const { Option } = Select;
 
+  // function handleFormSubmit(e) {
+  //   dispatch(registerUser(e)).then((res) => {
+  //     if (res?.payload?.success) {
+  //       localStorage.setItem("accessToken", res.payload.access_token);
+  //       localStorage.setItem("refreshToken", res.payload.refresh_token);
+  //       dispatch(setIsUserAuthChecked(true));
+  //       navigate(PROFILE, { replace: true });
+  //     }
+  //     else {
+  //       setRegisterError(res.payload.errors);
+  //     }
+  //   });
+  // }
+
   function handleFormSubmit(e) {
-    dispatch(registerUser(e)).then((res) => {
-      if (res.payload.success) {
-        localStorage.setItem("accessToken", res.payload.access_token);
-        localStorage.setItem("refreshToken", res.payload.refresh_token);
-        dispatch(setIsUserAuthChecked(true));
-        navigate(PROFILE, { replace: true });
-      }
-    });
+    dispatch(registerUser(e))
+      .then((res) => {
+        if (res?.payload?.success) {
+          localStorage.setItem("accessToken", res.payload.access_token);
+          localStorage.setItem("refreshToken", res.payload.refresh_token);
+          dispatch(setIsUserAuthChecked(true));
+          navigate(PROFILE, { replace: true });
+        } else if (!res?.payload?.success) {
+          dispatch(setRegisterError(res.error));
+        }
+      })
+      .catch((error) => {
+        dispatch(setRegisterError("Request was not done:", error));
+      });
   }
+
+  const errorText = useSelector(selectUserRegisterError);
 
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select
-        defaultValue="351"
+        initialValues="351"
         style={{
           width: 76,
         }}
@@ -50,6 +78,7 @@ function Signup() {
     <div className={styles.signup}>
       <TopMenuUnlogin />
       <div className={styles.signup__form}>
+        <Error errorText={errorText} />
         <Form
           form={form}
           name="register"

@@ -47,11 +47,11 @@ export const TERMS_CONDITIONS: string = "/terms-conditions";
 
 export const DELETE_ACCOUNT: string = "/delete-account";
 
-
 export const MESSAGES: string = "/messages";
 
 export const LOGIN: string = "/login";
 export const LOGOUT: string = "/logout";
+export const START: string = "/start";
 
 export const SIGNUP: string = "/signup";
 export const FORGOT_PASSWORD: string = "/forgot-password";

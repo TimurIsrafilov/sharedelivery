@@ -2,7 +2,7 @@
 
 import { Button, ConfigProvider } from "antd";
 
-function CommonButton({ type, title, disabled }) {
+function CommonButton({ type, title, disabled, onClick }) {
   const blueButton = {
     components: {
       Button: {
@@ -41,7 +41,7 @@ function CommonButton({ type, title, disabled }) {
 
   return (
     <ConfigProvider theme={buttonColor}>
-      <Button size="large" disabled={disabled}>
+      <Button size="large" disabled={disabled} onClick={onClick}>
         {title}
       </Button>
     </ConfigProvider>

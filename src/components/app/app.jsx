@@ -25,13 +25,13 @@ import {
   SETTINGS,
   // SEARCH_RESULTS,
   SIGNUP,
+  START,
   SUPPORT,
   TERMS_CONDITIONS,
 } from "../../utils/constants";
 // import OrderCard from "../order-card/order-card";
 // import TopMenu from "../top-menu/top-menu";
 import DetailedOrder from "../detailed-order/detailed-order";
-// import SearchOrders from "../../pages/search-orders/search-orders";
 import FavoriteOrders from "../../pages/favorite-orders/favorite-orders";
 import CurrentOrders from "../../pages/current-orders/current-orders";
 import Support from "../../pages/support/support";
@@ -68,6 +68,7 @@ import { useEffect } from "react";
 import { checkUser, getUser } from "../../services/user/actions";
 import { OnlyAuth, OnlyUnAuth } from "../protected-route/protected-route";
 import OrderCreate from "../../pages/order-create/order-create";
+import Start from "../../pages/start/start";
 
 function App() {
   const location = useLocation();
@@ -163,12 +164,12 @@ function App() {
             element={<OnlyAuth component={<CompletedOrders />} />}
           />
 
-         <Route
+          <Route
             path={ORDER_CREATE}
             element={<OnlyAuth component={<OrderCreate />} />}
-          /> 
+          />
 
-{/* <Route
+          {/* <Route
             path={ORDER_CREATE}  element={<OrderCreate /> }
           /> */}
 
@@ -201,6 +202,8 @@ function App() {
             element={<DetailedPhoto />}
           />
           <Route path={LOGIN} element={<OnlyUnAuth component={<Login />} />} />
+
+          <Route path={START} element={<OnlyUnAuth component={<Start />} />} />
           <Route
             path={SIGNUP}
             element={<OnlyUnAuth component={<Signup />} />}

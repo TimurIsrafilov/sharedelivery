@@ -1,3 +1,6 @@
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
+
 import styles from "./footer.module.css";
 
 import search_icon from "../../images/search_icon.svg";
@@ -20,7 +23,6 @@ import new_order_icon_active from "../../images/new_order_icon_active.svg";
 
 import { selectUser } from "../../services/user/reducer";
 
-import { NavLink } from "react-router-dom";
 import {
   CURRENT_ORDERS,
   FAVORITE_ORDERS,
@@ -29,39 +31,14 @@ import {
   SEARCH_ORDERS,
   SUPPORT,
 } from "../../utils/constants";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
 function Footer() {
   const userToShow = useSelector(selectUser);
   const role = userToShow?.role;
 
   if (!userToShow) {
-    return null; // Ждем загрузки данных, пока они не станут доступны
+    return null;
   }
-  // const navigate = useNavigate();
-
-  // const handleSearchOrdersClick = () => {
-  //   navigate(SEARCH_ORDERS);
-  // };
-
-  // const handleFavoriteOrdersClick = () => {
-  //   navigate(FAVORITE_ORDERS);
-  // };
-
-  // const handleCurrentOrdersClick = () => {
-  //   navigate(CURRENT_ORDERS);
-  // };
-
-  // const handleSupportClick = () => {
-  //   navigate(SUPPORT);
-  // };
-
-
-
-  // if (!userToShow) {
-  //   return null; // Или выводите компонент-заглушку
-  // }
 
   return (
     <footer className={styles.footer}>

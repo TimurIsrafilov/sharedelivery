@@ -109,7 +109,7 @@ function Profile() {
           <div className={styles.profile__user_info_container}>
             <p
               className={styles.profile__user_title}
-            >{`${userToShow.first_name} ${userToShow.middle_name} ${userToShow.last_name}`}</p>
+            >{`${userToShow?.first_name} ${userToShow?.middle_name} ${userToShow?.last_name}`}</p>
             <p className={styles.profile__user_info}>{userToShow.phone}</p>
             <p className={styles.profile__user_info}>{userToShow.email}</p>
           </div>

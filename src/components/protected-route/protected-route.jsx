@@ -5,7 +5,7 @@ import {
   selectUser,
 } from "../../services/user/reducer";
 import { Navigate, useLocation } from "react-router-dom";
-import { LOGIN } from "../../utils/constants";
+import { START } from "../../utils/constants";
 
 const ProtectedRoute = ({ onlyUnAuth = false, component }) => {
   const isAuthChecked = useSelector(checkUserAuth);
@@ -16,7 +16,7 @@ const ProtectedRoute = ({ onlyUnAuth = false, component }) => {
 
   if (!isAuthChecked) {
     // return isAuthCheckedLoading;
-    return ;
+    return;
   }
 
   if (onlyUnAuth && user) {
@@ -25,7 +25,7 @@ const ProtectedRoute = ({ onlyUnAuth = false, component }) => {
   }
 
   if (!onlyUnAuth && !user) {
-    return <Navigate to={LOGIN} state={{ from: location }} />;
+    return <Navigate to={START} state={{ from: location }} />;
   }
 
   return component;

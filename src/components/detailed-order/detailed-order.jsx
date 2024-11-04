@@ -35,7 +35,7 @@ function DetailedOrder(
   };
 
   return (
-    <div className={styles.detailed_order}>
+    <div>
       {orderToShow ? (
         <div className={styles.detailed_order}>
           <div className={styles.detailed_order__main_container}>
@@ -151,7 +151,7 @@ function DetailedOrder(
               type="button"
               className={styles.detailed_order__button_price}
             >
-              Offer my price
+              Offer your price
             </button>
             <button
               type="button"

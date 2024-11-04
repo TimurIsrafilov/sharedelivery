@@ -37,7 +37,7 @@ import { Button, Form, ConfigProvider, Input, Space } from "antd";
 //   );
 // };
 
-const  SubmitButton = ({ type, title, disabled, form, children }) => {
+const SubmitButton = ({ type, title, disabled, form, children }) => {
   const blueButton = {
     components: {
       Button: {
@@ -94,7 +94,7 @@ const  SubmitButton = ({ type, title, disabled, form, children }) => {
       </Button>
     </ConfigProvider>
   );
-}
+};
 
 // export default SubmitButton;
 

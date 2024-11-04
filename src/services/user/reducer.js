@@ -3,6 +3,10 @@ import { getUser, registerUser, loginUser, logoutUser } from "./actions";
 
 const initialState = {
   user: null,
+  registerError: null,
+  loginError: null,
+  logoutError: null,
+  loading: false,
   // userRegister: null,
   // userLogin: null,
   isUserAuthChecked: false,
@@ -16,7 +20,10 @@ export const userRegisterSlice = createSlice({
       state.isUserAuthChecked = action.payload;
     },
     setUser: (state, action) => {
-      state.user = action.payload;
+      state.user = action.payload.user;
+    },
+    setRegisterError: (state, action) => {
+      state.registerError = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -31,16 +38,16 @@ export const userRegisterSlice = createSlice({
       })
       .addCase(getUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
+        state.user = action.payload.user;
       })
 
       .addCase(registerUser.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.registerError = null;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.registerError = action.payload;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.loading = false;
@@ -49,11 +56,11 @@ export const userRegisterSlice = createSlice({
 
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.loginError = null;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.loginError = action.payload;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
@@ -62,20 +69,21 @@ export const userRegisterSlice = createSlice({
 
       .addCase(logoutUser.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        state.logoutError = null;
       })
       .addCase(logoutUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.logoutError = action.payload;
       })
       .addCase(logoutUser.fulfilled, (state, action) => {
         state.loading = false;
-        state.user = action.payload;
+        state.user = null;
       });
   },
 });
 
-export const { setIsUserAuthChecked, setUser } = userRegisterSlice.actions;
+export const { setIsUserAuthChecked, setUser, setRegisterError } =
+  userRegisterSlice.actions;
 
 export const selectUser = (state) => state.user.user;
 export const selectUserLoading = (state) => state.user.loading;

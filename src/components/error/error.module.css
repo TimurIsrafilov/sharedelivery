@@ -1,0 +1,7 @@
+.error {
+    margin: 5px;
+}
+
+.error_title {
+    color: var(--red);
+}

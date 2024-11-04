@@ -12,18 +12,30 @@ code {
     monospace; */
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --black: rgba(0, 0, 0, 1);
+  --black-hover: rgba(0, 0, 0, 0.5);
   --dark-grey: rgba(103, 103, 103, 1);
   --light-grey: rgba(165, 165, 165, 1);
   --background-grey: rgba(234, 234, 234, 1);
   --red: rgba(228, 0, 0, 1);
+
   --blue: rgba(76, 64, 230, 1);
   --blue-hover: rgba(76, 64, 230, 0.8);
+  --light-blue: rgba(51, 76, 219, 1);
+  --blue-back: rgba(89, 110, 226, 1);
+
   --green: rgba(150, 229, 135, 1);
   --green-hover: rgba(150, 229, 135, 0.8);
   --yellow: rgba(225, 249, 75, 1);
   --white: rgba(255, 255, 255, 1);
+  --white-hover: rgba(255, 255, 255, 0.25);
 
   --box-shadow-top: 0px -3px 5px 0px rgba(0, 0, 0, 0.05);
   --box-shadow-bottom: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);
@@ -31,14 +43,19 @@ code {
   --font-size-12: 12px;
   --font-size-14: 14px;
   --font-size-16: 16px;
+  --font-size-20: 20px;
   --font-size-22: 22px;
   --font-size-24: 24px;
+  --font-size-38: 38px;
 
   --font-style-normal: normal;
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
+  --font-weight-black: 900;
 }
+
+
 
 @import url("./fonts/fonts.css");

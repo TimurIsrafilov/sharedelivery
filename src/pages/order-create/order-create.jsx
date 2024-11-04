@@ -49,13 +49,11 @@ function OrderCreate() {
 
   const { Option } = Select;
 
-  function handFromleInputChange(query) { 
-    api 
+  function handFromleInputChange(query) {
+    api
       .getPlaces(query)
       .then((res) => {
-
         const s = res.features.map((item) => item.properties);
-
 
         const x = res.features.map((item) => item.properties.full_address);
         // const x = res.features?.map((item) => item?.properties?.context?.place);
@@ -78,7 +76,6 @@ function OrderCreate() {
     api
       .getPlaces(query)
       .then((res) => {
-
         const s = res.features.map((item) => item.properties);
 
         const x = res.features.map((item) => item.properties.full_address);
@@ -100,9 +97,10 @@ function OrderCreate() {
   // }
 
   function handleFormSubmit(e) {
-    const fromDetailData = fromData.find((i) => e.from_address === i.full_address      )
-    const toDetailData = toData.find((i) => e.to_address === i.full_address      )
-
+    const fromDetailData = fromData.find(
+      (i) => e.from_address === i.full_address
+    );
+    const toDetailData = toData.find((i) => e.to_address === i.full_address);
 
     dispatch(createOrder(e, fromDetailData, toDetailData));
     // .then((res) => {
@@ -119,19 +117,19 @@ function OrderCreate() {
     console.log(date, dateString);
   };
 
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        defaultValue="351"
-        style={{
-          width: 76,
-        }}
-      >
-        <Option value="351">+351</Option>
-        {/* <Option value="7">+7</Option> */}
-      </Select>
-    </Form.Item>
-  );
+  // const prefixSelector = (
+  //   <Form.Item name="prefix" noStyle>
+  //     <Select
+  //       defaultValue="351"
+  //       style={{
+  //         width: 76,
+  //       }}
+  //     >
+  //       <Option value="351">+351</Option>
+  //       {/* <Option value="7">+7</Option> */}
+  //     </Select>
+  //   </Form.Item>
+  // );
 
   const [fileList, setFileList] = useState([
     // {
