@@ -1,23 +1,9 @@
-import styles from "./profile.module.css";
-
-import user_pic from "../../images/user_pic.png";
-import { useDispatch, useSelector } from "react-redux";
-import { selectUser } from "../../services/user/reducer";
-import MenuComponent from "../../components/menu-component/menu-component";
-
-// import arrow_menu from "./../../images/arrow_menu.svg"
-import card_icon from "./../../images/card_icon.svg";
-import like_icon from "./../../images/like_icon.svg";
-import current_icon from "./../../images/current_icon.svg";
-import delivered_orders_icon from "./../../images/delivered_orders_icon.svg";
-import settings_icon from "./../../images/settings_icon.svg";
-import terms_icon from "./../../images/terms_icon.svg";
-
-import delete_icon from "./../../images/delete_icon.svg";
-
-import logout_icon from "./../../images/logout_icon.svg";
-
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./profile.module.css";
+import MenuComponent from "../../components/menu-component/menu-component";
+import { selectUser } from "../../services/user/reducer";
+import { logoutUser } from "../../services/user/actions";
 import {
   COMPLETED_ORDERS,
   CURRENT_ORDERS,
@@ -27,7 +13,15 @@ import {
   SETTINGS,
   TERMS_CONDITIONS,
 } from "../../utils/constants";
-import { logoutUser } from "../../services/user/actions";
+import user_pic from "../../images/user_pic.png";
+import card_icon from "./../../images/card_icon.svg";
+import like_icon from "./../../images/like_icon.svg";
+import current_icon from "./../../images/current_icon.svg";
+import delivered_orders_icon from "./../../images/delivered_orders_icon.svg";
+import settings_icon from "./../../images/settings_icon.svg";
+import terms_icon from "./../../images/terms_icon.svg";
+import delete_icon from "./../../images/delete_icon.svg";
+import logout_icon from "./../../images/logout_icon.svg";
 
 function Profile() {
   const dispatch = useDispatch();
@@ -119,8 +113,8 @@ function Profile() {
       )}
 
       <div className={styles.profile__menu_points}>
-        {paymentData.map((i) => (
-          <Link to={i.linkTo} className={styles.profile__menu_link}>
+        {paymentData.map((i, index) => (
+          <Link to={i.linkTo} className={styles.profile__menu_link} key={index}>
             <MenuComponent icon={i.icon} title={i.title} />
           </Link>
         ))}
@@ -128,8 +122,12 @@ function Profile() {
 
       {role === "courier" ? (
         <div className={styles.profile__menu_points}>
-          {favoriteOrdersData.map((i) => (
-            <Link to={i.linkTo} className={styles.profile__menu_link}>
+          {favoriteOrdersData.map((i, index) => (
+            <Link
+              to={i.linkTo}
+              className={styles.profile__menu_link}
+              key={index}
+            >
               <MenuComponent icon={i.icon} title={i.title} />
             </Link>
           ))}
@@ -139,26 +137,27 @@ function Profile() {
       )}
 
       <div className={styles.profile__menu_points}>
-        {ordersData.map((i) => (
-          <Link to={i.linkTo} className={styles.profile__menu_link}>
+        {ordersData.map((i, index) => (
+          <Link to={i.linkTo} className={styles.profile__menu_link} key={index}>
             <MenuComponent icon={i.icon} title={i.title} />
           </Link>
         ))}
       </div>
 
       <div className={styles.profile__menu_points}>
-        {serviceData.map((i) => (
-          <Link to={i.linkTo} className={styles.profile__menu_link}>
+        {serviceData.map((i, index) => (
+          <Link to={i.linkTo} className={styles.profile__menu_link} key={index}>
             <MenuComponent icon={i.icon} title={i.title} />
           </Link>
         ))}
       </div>
 
       <div className={styles.profile__menu_points}>
-        {logoutData.map((i) => (
+        {logoutData.map((i, index) => (
           <button
             onClick={handleLogout}
             className={styles.profile__menu_button}
+            key={index}
           >
             <MenuComponent icon={i.icon} title={i.title} />
           </button>
@@ -166,8 +165,12 @@ function Profile() {
       </div>
 
       <div className={styles.profile__menu_points}>
-        {deleteData.map((i) => (
-          <Link to={i.linkTo} className={styles.profile__menu_link_delete}>
+        {deleteData.map((i, index) => (
+          <Link
+            to={i.linkTo}
+            className={styles.profile__menu_link_delete}
+            key={index}
+          >
             <MenuComponent icon={i.icon} title={i.title} />
           </Link>
         ))}

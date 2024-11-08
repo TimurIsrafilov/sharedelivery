@@ -1,6 +1,4 @@
-.profile {
-    /* background-color: var(--white); */
-}
+.profile {}
 
 .profile__user_container {
     display: flex;
@@ -56,7 +54,6 @@
     font-style: var(--font-style-normal);
     font-weight: var(--font-weight-regular);
     color: var(--black);
-
     text-decoration: none;
     color: var(--black);
     cursor: pointer;

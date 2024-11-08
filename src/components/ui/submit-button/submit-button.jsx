@@ -1,8 +1,7 @@
-// import styles from "./common-button.module.css";
+import { Button, ConfigProvider, Form } from "antd";
+import { useEffect, useState } from "react";
 
-import { Button, ConfigProvider } from "antd";
-
-function CommonButton({ type, title, disabled, onClick }) {
+function SubmitButton({ type, title, disabled, form, children, fileList }) {
   const blueButton = {
     components: {
       Button: {
@@ -39,13 +38,30 @@ function CommonButton({ type, title, disabled, onClick }) {
 
   const buttonColor = type === "blue" ? blueButton : greenButton;
 
+  const [submittable, setSubmittable] = useState(false);
+
+  const values = Form.useWatch([], form);
+  useEffect(() => {
+    form
+      .validateFields({
+        validateOnly: true,
+      })
+      .then(() => setSubmittable(true))
+      .catch(() => setSubmittable(false));
+  }, [form, values, fileList]);
+
   return (
     <ConfigProvider theme={buttonColor}>
-      <Button size="large" disabled={disabled} onClick={onClick}>
+      <Button
+        htmlType="submit"
+        size="large"
+        disabled={!submittable}
+        block={true}
+      >
         {title}
       </Button>
     </ConfigProvider>
   );
 }
 
-export default CommonButton;
+export default SubmitButton;

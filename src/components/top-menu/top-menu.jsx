@@ -1,16 +1,11 @@
-import styles from "./top-menu.module.css";
-
-import sort_icon from "../../images/sort_icon.svg";
-
-import sort_arrow_icon from "../../images/sort_arrow_icon.svg";
-import { useSelector } from "react-redux";
-import { selectOrders } from "../../services/orders/reducer";
-
-import "mapbox-gl/dist/mapbox-gl.css";
-import { selectSearchedOrders } from "../../services/searched-orders/reducer";
 import { useLocation } from "react-router-dom";
-// import { useState } from "react";
-// import AutoFillInput from "../auto-fill-input/auto-fill-input";
+import { useSelector } from "react-redux";
+import "mapbox-gl/dist/mapbox-gl.css";
+import styles from "./top-menu.module.css";
+import { selectOrders } from "../../services/orders/reducer";
+import { selectSearchedOrders } from "../../services/searched-orders/reducer";
+import sort_icon from "../../images/sort_icon.svg";
+import sort_arrow_icon from "../../images/sort_arrow_icon.svg";
 
 function TopMenu() {
   const location = useLocation();
@@ -22,19 +17,6 @@ function TopMenu() {
 
   const ordersToShow =
     currentUrl === "search-results" ? searchedOrders : orders;
-
-  // const pathLogin = currentUrl === "login" ? true : orders;
-
-  // const pathSignUp = currentUrl === "signUp" ? searchedOrders : orders;
-
-  //   var autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
-  //     language: 'en',
-  //     componentRestrictions: {country: 'pt'}
-  // });
-
-  // const [address, setAddress] = useState ({
-  // town: ""
-  // })
 
   return (
     <div className={styles.top_menu}>

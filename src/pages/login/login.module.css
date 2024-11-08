@@ -1,10 +1,4 @@
-.login {
-    /* display: flex;
-    flex-direction: column;
-    background-color: var(--white);
-    margin: 0;
-    padding: 24px; */
-}
+.login {}
 
 .login__form {
     display: flex;

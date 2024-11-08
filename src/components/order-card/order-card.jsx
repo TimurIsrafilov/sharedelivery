@@ -1,29 +1,19 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
 import styles from "./order-card.module.css";
-
+import { loadOrder } from "../../services/order/actions";
+import { ORDERS } from "../../utils/constants";
 import arrow_icon from "../../images/arrow_icon.svg";
-
 import point_a_icon from "../../images/point_a_icon.svg";
 import point_b_icon from "../../images/point_b_icon.svg";
-
 import truck_icon from "../../images/truck_icon.svg";
 import car_icon from "../../images/car_icon.svg";
 import motoroller_icon from "../../images/motoroller_icon.svg";
-
 import like_shifted_icon from "../../images/like_shifted_icon.svg";
 import like_shifted_icon_active from "../../images/like_shifted_icon_active.svg";
 
-// import { TypeOrderInfo } from "../../types/types";
-
-import { loadOrder } from "../../services/order/actions";
-import { ORDERS } from "../../utils/constants";
-import { useState } from "react";
-
 function OrderCard({ item }) {
-  // : TypeOrderInfo
-  // : React.JSX.Element
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -39,20 +29,8 @@ function OrderCard({ item }) {
     setLikeStatus(!likeStatus);
   };
 
-  // const date = new Date(item.from_datetime).toLocaleDateString();
-  // let day = date.toLocaleDateString();
-  // let time = date.toLocaleTimeString([], {
-  //   hour: "2-digit",
-  //   minute: "2-digit",
-  // });
-
   return (
     <div className={styles.order_card}>
-      {/* <button
-        type="button"
-        onClick={handleUserShow}
-        className={styles.order_card__button}
-      > */}
       <button
         type="button"
         onClick={handleUserShow}

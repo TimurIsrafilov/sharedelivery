@@ -7,7 +7,7 @@ import { AutoComplete, DatePicker, Form } from "antd";
 
 import styles from "./form-search-orders.module.css";
 
-import SubmitButton from "../submit-button/submit-button";
+import SubmitButton from "../ui/submit-button/submit-button";
 
 import * as api from "../../utils/mapbox_api";
 import { SEARCH_RESULTS } from "../../utils/constants";
@@ -77,7 +77,7 @@ function FormSearchOrders() {
               placeholder="City"
               size="large"
               notFoundContent="valid city is required"
-              singleItemHeightLG={50}
+              singleitemheightlg={50}
             />
           </Form.Item>
         </div>

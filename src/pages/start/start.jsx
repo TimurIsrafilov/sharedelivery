@@ -1,7 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
 import styles from "./start.module.css";
-
 import CardIcon from "../../icons/card-icon";
 import RouteIcon from "../../icons/route-icon";
 import CarIcon from "../../icons/car-icon";
@@ -12,12 +10,10 @@ import PeopleIcon from "../../icons/people-icon";
 import CurrentOrderIcon from "../../icons/current-order-icon";
 import HandshakeIcon from "../../icons/handshake-icon";
 import MessagesIcon from "../../icons/messages-icon";
-import CommonButton from "../../components/common-button/common-button";
-
+import CommonButton from "../../components/ui/common-button/common-button";
 import linkedin_icon from "../../images/linkedin_icon.svg";
 import email_icon from "../../images/email_icon.svg";
 import telegram_icon from "../../images/telegram_icon.svg";
-
 import { SIGNUP } from "../../utils/constants";
 
 function Start() {
@@ -104,7 +100,7 @@ function Start() {
           <div className={styles.start__type_container}>
             <h4 className={styles.start__work_type}>Sender/Receiver</h4>
             {Sender.map((i, index) => (
-              <div className={styles.start__work_item}>
+              <div className={styles.start__work_item} key={index}>
                 <p className={styles.start__work_title}>{index + 1}</p>
                 <p className={styles.start__work_point}>{i}</p>
               </div>
@@ -113,7 +109,7 @@ function Start() {
           <div className={styles.start__type_container}>
             <h4 className={styles.start__work_type}>Courier</h4>
             {Courier.map((i, index) => (
-              <div className={styles.start__work_item}>
+              <div className={styles.start__work_item} key={index}>
                 <p className={styles.start__work_title}>{index + 1}</p>
                 <p className={styles.start__work_point}>{i}</p>
               </div>
@@ -151,7 +147,6 @@ function Start() {
                   Stay in touch with the courier at any time
                 </p>
               </div>
-
               <CommonButton
                 type={"green"}
                 title={"Register and create order"}

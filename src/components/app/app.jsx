@@ -1,10 +1,42 @@
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-
+import { useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { ConfigProvider } from "antd";
 import styles from "./app.module.css";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-// import SearchResults from "../../pages/search-results";
-
+import DetailedOrder from "../detailed-order/detailed-order";
+import FavoriteOrders from "../../pages/favorite-orders/favorite-orders";
+import CurrentOrders from "../../pages/current-orders/current-orders";
+import Support from "../../pages/support/support";
+import SearchResults from "../../pages/search-results/search-results";
+import Preloader from "../ui/preloader/preloader";
+import DetailedPhoto from "../detailed-photo/detailed-photo";
+import Login from "../../pages/login/login";
+import Signup from "../../pages/signup/signup";
+import ForgotPassword from "../../pages/forgot-password/forgot-password";
+import SearchOrders from "../../pages/search-orders/search-orders";
+import Profile from "../../pages/profile/profile";
+import SearchDetailedResults from "../../pages/search-detailed-results/search-detailed-results";
+import NotFound404 from "../../pages/not-found-404/not-found-404";
+import PaymentDetails from "../../pages/payment-details/payment-details";
+import CompletedOrders from "../../pages/completed-orders/completed-orders";
+import Settings from "../../pages/settings/settings";
+import TermsAndConditions from "../../pages/terms-and-conditions/terms-and-conditions";
+import Messages from "../../pages/messages/messages";
+import DeleteAccount from "../../pages/delete-account/delete-account";
+import OrderCreate from "../../pages/order-create/order-create";
+import Start from "../../pages/start/start";
+import { OnlyAuth, OnlyUnAuth } from "../protected-route/protected-route";
+import { selectOrderLoading } from "../../services/order/reducer";
+import { selectOrdersLoading } from "../../services/orders/reducer";
+import { getUser } from "../../services/user/actions";
+import {
+  selectUserLoginLoading,
+  selectUserRegisterLoading,
+  setIsUserAuthChecked,
+  setUser,
+} from "../../services/user/reducer";
 import {
   COMMON_SEARCH,
   COMPLETED_ORDERS,
@@ -23,56 +55,14 @@ import {
   SEARCH_ORDERS,
   SEARCH_RESULTS,
   SETTINGS,
-  // SEARCH_RESULTS,
   SIGNUP,
   START,
   SUPPORT,
   TERMS_CONDITIONS,
 } from "../../utils/constants";
-// import OrderCard from "../order-card/order-card";
-// import TopMenu from "../top-menu/top-menu";
-import DetailedOrder from "../detailed-order/detailed-order";
-import FavoriteOrders from "../../pages/favorite-orders/favorite-orders";
-import CurrentOrders from "../../pages/current-orders/current-orders";
-import Support from "../../pages/support/support";
-import SearchResults from "../../pages/search-results/search-results";
-import Preloader from "../preloader/preloader";
-import { useDispatch, useSelector } from "react-redux";
-import { selectOrderLoading } from "../../services/order/reducer";
-import { selectOrdersLoading } from "../../services/orders/reducer";
-import DetailedPhoto from "../detailed-photo/detailed-photo";
-import Login from "../../pages/login/login";
-import Signup from "../../pages/signup/signup";
-import ForgotPassword from "../../pages/forgot-password/forgot-password";
-import SearchOrders from "../../pages/search-orders/search-orders";
-import { AutoComplete, ConfigProvider } from "antd";
-import SearchedOrderResults from "../../pages/search-detailed-results/search-detailed-results";
-import SearchDetailedResults from "../../pages/search-detailed-results/search-detailed-results";
-import Profile from "../../pages/profile/profile";
-import {
-  checkUserAuth,
-  selectUserLoading,
-  selectUserLoginLoading,
-  selectUserRegisterLoading,
-  setIsUserAuthChecked,
-  setUser,
-} from "../../services/user/reducer";
-import NotFound404 from "../../pages/not-found-404/not-found-404";
-import PaymentDetails from "../../pages/payment-details/payment-details";
-import CompletedOrders from "../../pages/completed-orders/completed-orders";
-import Settings from "../../pages/settings/settings";
-import TermsAndConditions from "../../pages/terms-and-conditions/terms-and-conditions";
-import Messages from "../../pages/messages/messages";
-import DeleteAccount from "../../pages/delete-account/delete-account";
-import { useEffect } from "react";
-import { checkUser, getUser } from "../../services/user/actions";
-import { OnlyAuth, OnlyUnAuth } from "../protected-route/protected-route";
-import OrderCreate from "../../pages/order-create/order-create";
-import Start from "../../pages/start/start";
 
 function App() {
   const location = useLocation();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const isOrderLoading = useSelector(selectOrderLoading);
@@ -81,15 +71,10 @@ function App() {
   const isUserRegistering = useSelector(selectUserRegisterLoading);
   const isUserLogining = useSelector(selectUserLoginLoading);
 
-  // const orderToShow = useSelector(selectOrder);
   const currentUrl = location.pathname.split("/").pop();
-  // const isUsersLoading = useSelector(selectUsersLoading);
-  // const isWorkerLoading = useSelector(selectWorkerLoading);
-  // const isProjectsLoading = useSelector(selectProjectsLoading);
 
   const isLoading =
     isOrderLoading || isOrdersLoading || isUserRegistering || isUserLogining;
-  //  || isUsersLoading || isWorkerLoading || isProjectsLoading;
 
   const isUnAuthPage =
     currentUrl !== "login" &&
@@ -97,8 +82,6 @@ function App() {
     currentUrl !== "forgot-password";
 
   useEffect(() => {
-    // dispatch(checkUser())
-
     if (localStorage.getItem("accessToken")) {
       dispatch(getUser())
         .catch(() => {
@@ -113,7 +96,7 @@ function App() {
   }, []);
 
   return (
-    <div className={styles.page}>
+    <div className={styles.app}>
       {isLoading && <Preloader />}
 
       <ConfigProvider
@@ -121,13 +104,11 @@ function App() {
           token: {
             borderRadius: 5,
             colorBorder: "var(--dark-grey)",
-
             controlHeightLG: 40,
           },
         }}
       >
         <Header />
-        {/* <TopMenu /> */}
 
         <Routes>
           <Route
@@ -163,16 +144,10 @@ function App() {
             path={COMPLETED_ORDERS}
             element={<OnlyAuth component={<CompletedOrders />} />}
           />
-
           <Route
             path={ORDER_CREATE}
             element={<OnlyAuth component={<OrderCreate />} />}
           />
-
-          {/* <Route
-            path={ORDER_CREATE}  element={<OrderCreate /> }
-          /> */}
-
           <Route
             path={PAYMENT_DETAILS}
             element={<OnlyAuth component={<PaymentDetails />} />}
@@ -201,8 +176,8 @@ function App() {
             path={`${ORDERS}${NUMBER}/${ORDER_PHOTO}${NUMBER}`}
             element={<DetailedPhoto />}
           />
-          <Route path={LOGIN} element={<OnlyUnAuth component={<Login />} />} />
 
+          <Route path={LOGIN} element={<OnlyUnAuth component={<Login />} />} />
           <Route path={START} element={<OnlyUnAuth component={<Start />} />} />
           <Route
             path={SIGNUP}
@@ -214,7 +189,6 @@ function App() {
           />
           <Route path="*" element={<NotFound404 />} />
         </Routes>
-
         {isUnAuthPage && <Footer />}
       </ConfigProvider>
     </div>

@@ -1,9 +1,6 @@
-import styles from "./submit-button.module.css";
+import { Button, ConfigProvider } from "antd";
 
-import { Button, ConfigProvider, Form } from "antd";
-import { useEffect, useState } from "react";
-
-function SubmitButton({ type, title, disabled, form, children, fileList }) {
+function CommonButton({ type, title, disabled, onClick }) {
   const blueButton = {
     components: {
       Button: {
@@ -40,32 +37,13 @@ function SubmitButton({ type, title, disabled, form, children, fileList }) {
 
   const buttonColor = type === "blue" ? blueButton : greenButton;
 
-  const [submittable, setSubmittable] = useState(false);
-
-  // Watch all values
-  const values = Form.useWatch([], form);
-  useEffect(() => {
-    form
-      .validateFields({
-        validateOnly: true,
-      })
-      .then(() => setSubmittable(true))
-      .catch(() => setSubmittable(false));
-  }, [form, values, fileList]);
-
   return (
     <ConfigProvider theme={buttonColor}>
-      <Button
-        // className={styles.search_orders__input}
-        htmlType="submit"
-        size="large"
-        disabled={!submittable}
-        block={true}
-      >
+      <Button size="large" disabled={disabled} onClick={onClick}>
         {title}
       </Button>
     </ConfigProvider>
   );
 }
 
-export default SubmitButton;
+export default CommonButton;

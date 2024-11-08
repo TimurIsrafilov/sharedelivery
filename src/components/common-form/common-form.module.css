@@ -4,25 +4,16 @@
     background-color: var(--white);
     margin: 0;
     padding: 24px;
-
 }
-
 
 .common_form__checkbox_container {
     margin: 6px 0 0 0;
     padding: 0;
 }
 
-
 .common_form__radio {
-    /* font-family: 'Roboto', 'Arial', sans-serif;
-    font-size: var(--font-size-16);
-    font-style: var(--font-style-normal);
-    font-weight: var(--font-weight-regular);
-    color: var(--dark-grey); */
     margin: 32px 0 0 0;
     padding: 0;
-    /* border-radius: 50%; */
 }
 
 .common_form__role_container {
@@ -50,8 +41,6 @@
     border-radius: 5px;
     margin: 0;
     padding: 20px 20px 4px 16px;
-
-
 }
 
 .common_form__icon_checkbox_container {

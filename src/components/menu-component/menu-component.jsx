@@ -1,5 +1,4 @@
 import styles from "./menu-component.module.css";
-
 import arrow_menu from "./../../images/arrow_menu.svg";
 
 function MenuComponent({ icon, title, onClick }) {

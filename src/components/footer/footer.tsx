@@ -1,28 +1,19 @@
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-
 import styles from "./footer.module.css";
-
+import { selectUser } from "../../services/user/reducer";
 import search_icon from "../../images/search_icon.svg";
 import search_icon_active from "../../images/search_icon_active.svg";
-
 import current_icon from "../../images/current_icon.svg";
 import current_icon_active from "../../images/current_icon_active.svg";
-
 import messages_icon from "../../images/messages_icon.svg";
 import messages_icon_active from "../../images/messages_icon_active.svg";
-
 import like_icon from "../../images/like_icon.svg";
 import like_icon_active from "../../images/like_icon_active.svg";
-
 import support_icon from "../../images/support_icon.svg";
 import support_icon_active from "../../images/support_icon_active.svg";
-
 import new_order_icon from "../../images/new_order_icon.svg";
 import new_order_icon_active from "../../images/new_order_icon_active.svg";
-
-import { selectUser } from "../../services/user/reducer";
-
 import {
   CURRENT_ORDERS,
   FAVORITE_ORDERS,

@@ -1,44 +1,21 @@
-import CommonForm from "../../components/common-form/common-form";
-import SubmitButton from "../../components/submit-button/submit-button";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import styles from "./order-create.module.css";
-
-import {
-  AutoComplete,
-  Button,
-  Checkbox,
-  DatePicker,
-  Form,
-  Input,
-  Radio,
-  Select,
-  Space,
-  TimePicker,
-} from "antd";
-
+import TextArea from "antd/es/input/TextArea";
+import SubmitButton from "../../components/ui/submit-button/submit-button";
+import { AutoComplete, DatePicker, Form, Input, Radio, Upload } from "antd";
+import ImgCrop from "antd-img-crop";
+import { createOrder } from "../../utils/api";
+import * as api from "../../utils/mapbox_api";
 import truck_icon_dark from "../../images/truck_icon_dark.svg";
 import car_icon_dark from "../../images/car_icon_dark.svg";
 import motoroller_icon_dark from "../../images/motoroller_icon_dark.svg";
-
 import photocam_icon from "../../images/photocam_icon.svg";
-
-import { useDispatch } from "react-redux";
-import { registerUser } from "../../services/user/actions";
-import { useNavigate } from "react-router-dom";
-import { COMMON_SEARCH, LOGIN, PROFILE } from "../../utils/constants";
-import TopMenuUnlogin from "../../components/top-menu-unlogin/top-menu-unlogin";
 import { setIsUserAuthChecked } from "../../services/user/reducer";
-
-import * as api from "../../utils/mapbox_api";
-import { useEffect, useState } from "react";
-import TextArea from "antd/es/input/TextArea";
-
-import { Upload } from "antd";
-import ImgCrop from "antd-img-crop";
-import { createOrder } from "../../utils/api";
-import { addFromData, addToData } from "../../services/create-order/reducer";
+import { Navigate } from "react-router-dom";
+import { PROFILE } from "../../utils/constants";
 
 function OrderCreate() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [form] = Form.useForm();
@@ -47,23 +24,13 @@ function OrderCreate() {
   const [fromData, setFromData] = useState([]);
   const [toData, setToData] = useState([]);
 
-  const { Option } = Select;
-
   function handFromleInputChange(query) {
     api
       .getPlaces(query)
       .then((res) => {
         const s = res.features.map((item) => item.properties);
-
         const x = res.features.map((item) => item.properties.full_address);
-        // const x = res.features?.map((item) => item?.properties?.context?.place);
-
-        // const z = res.features.map((item) => item.properties.context);
-        // let w = [];
-        // w = z.map((item) => ({ value: item }));
-
         setFromData(s);
-        // dispatch(addFromData(s));
 
         let y = [];
         y = x.map((item) => ({ value: item }));
@@ -77,12 +44,8 @@ function OrderCreate() {
       .getPlaces(query)
       .then((res) => {
         const s = res.features.map((item) => item.properties);
-
         const x = res.features.map((item) => item.properties.full_address);
-
-        // const z = res.features.map((item) => item.properties.context);
         setToData(s);
-        // dispatch(addToData(res.features.properties));
 
         let y = [];
         y = x.map((item) => ({ value: item }));
@@ -91,45 +54,25 @@ function OrderCreate() {
       .catch((err) => console.log(`Ошибка.....: ${err}`));
   }
 
-  // function handleFormSubmit(e) {
-  //   // что делаем после того как все заполнено
-  //   // navigate(куда-то отправляем);
-  // }
-
   function handleFormSubmit(e) {
     const fromDetailData = fromData.find(
       (i) => e.from_address === i.full_address
     );
     const toDetailData = toData.find((i) => e.to_address === i.full_address);
 
-    dispatch(createOrder(e, fromDetailData, toDetailData));
-    // .then((res) => {
-    // if (res.payload.success) {
-    //   localStorage.setItem("accessToken", res.payload.access_token);
-    //   localStorage.setItem("refreshToken", res.payload.refresh_token);
-    //   dispatch(setIsUserAuthChecked(true));
-    //   navigate(PROFILE, { replace: true });
-    // }
-    // });
+    dispatch(createOrder(e, fromDetailData, toDetailData)).then((res) => {
+      if (res.payload.success) {
+        localStorage.setItem("accessToken", res.payload.access_token);
+        localStorage.setItem("refreshToken", res.payload.refresh_token);
+        dispatch(setIsUserAuthChecked(true));
+        Navigate(PROFILE, { replace: true });
+      }
+    });
   }
 
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
-
-  // const prefixSelector = (
-  //   <Form.Item name="prefix" noStyle>
-  //     <Select
-  //       defaultValue="351"
-  //       style={{
-  //         width: 76,
-  //       }}
-  //     >
-  //       <Option value="351">+351</Option>
-  //       {/* <Option value="7">+7</Option> */}
-  //     </Select>
-  //   </Form.Item>
-  // );
 
   const [fileList, setFileList] = useState([
     // {
@@ -162,20 +105,6 @@ function OrderCreate() {
     console.log("checked = ", checkedValues);
   };
   const deliveryOptions = ["Truck", "Car", "Motoroller"];
-  // const options = [
-  //   {
-  //     label: "Truck",
-  //     value: "Truck",
-  //   },
-  //   {
-  //     label: "Car",
-  //     value: "Car",
-  //   },
-  //   {
-  //     label: "Motorbike, bike, bicycle",
-  //     value: "Motorbike, bike, bicycle",
-  //   },
-  // ];
 
   const format = "HH:mm";
 
@@ -222,7 +151,7 @@ function OrderCreate() {
                 placeholder="City"
                 size="large"
                 notFoundContent="valid city is required"
-                // singleItemHeightLG={50}
+                // singleitemheightlg={50}
               />
             </Form.Item>
           </div>
@@ -294,50 +223,6 @@ function OrderCreate() {
               </Form.Item>
             </div>
           </div>
-
-          {/* <div className={styles.order_create__date_container}>
-            <div className={styles.order_create__container}>
-              <h4 className={styles.order_create__input_title}>Pick up time</h4>
-              <Form.Item
-                name="from_time"
-                rules={[
-                  {
-                    required: true,
-                    message: "Enter pick up time",
-                  },
-                ]}
-              >
-                <TimePicker
-                  onChange={onChange}
-                  format={format}
-                  placeholder="HH:MM"
-                  size="large"
-                />
-              </Form.Item>
-            </div> */}
-
-          {/* <div className={styles.order_create__container}>
-              <h4 className={styles.order_create__input_title}>
-                Delivery time
-              </h4>
-              <Form.Item
-                name="to_time"
-                rules={[
-                  {
-                    required: true,
-                    message: "Enter delivery time",
-                  },
-                ]}
-              >
-                <TimePicker
-                  onChange={onChange}
-                  format={format}
-                  placeholder="HH:MM"
-                  size="large"
-                />
-              </Form.Item>
-            </div>
-          </div> */}
 
           <div className={styles.order_create__container}>
             <h4 className={styles.order_create__input_title}>Price</h4>

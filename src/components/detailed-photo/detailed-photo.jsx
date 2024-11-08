@@ -1,10 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import styles from "./detailed-photo.module.css";
-
 import { selectOrder } from "../../services/order/reducer";
-
 import arrow_back_icon from "../../images/arrow_back_icon.svg";
 
 function DetailedPhoto() {

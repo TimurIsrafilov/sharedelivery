@@ -1,23 +1,19 @@
-import CommonForm from "../../components/common-form/common-form";
-import SubmitButton from "../../components/submit-button/submit-button";
-import styles from "./signup.module.css";
-
-import { Button, Checkbox, Form, Input, Radio, Select, Space } from "antd";
-
-import truck_icon_dark from "../../images/truck_icon_dark.svg";
-import new_order_icon from "../../images/new_order_icon.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { registerUser } from "../../services/user/actions";
 import { useNavigate } from "react-router-dom";
-import { COMMON_SEARCH, LOGIN, PROFILE } from "../../utils/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { Checkbox, Form, Input, Radio, Select } from "antd";
+import styles from "./signup.module.css";
+import Error from "../../components/error/error";
+import SubmitButton from "../../components/ui/submit-button/submit-button";
 import TopMenuUnlogin from "../../components/top-menu-unlogin/top-menu-unlogin";
+import { registerUser } from "../../services/user/actions";
 import {
   selectUserRegisterError,
   setRegisterError,
   setIsUserAuthChecked,
 } from "../../services/user/reducer";
-import Error from "../../components/error/error";
-import { useState } from "react";
+import { PROFILE } from "../../utils/constants";
+import truck_icon_dark from "../../images/truck_icon_dark.svg";
+import new_order_icon from "../../images/new_order_icon.svg";
 
 function Signup() {
   const navigate = useNavigate();
@@ -26,20 +22,6 @@ function Signup() {
   const [form] = Form.useForm();
 
   const { Option } = Select;
-
-  // function handleFormSubmit(e) {
-  //   dispatch(registerUser(e)).then((res) => {
-  //     if (res?.payload?.success) {
-  //       localStorage.setItem("accessToken", res.payload.access_token);
-  //       localStorage.setItem("refreshToken", res.payload.refresh_token);
-  //       dispatch(setIsUserAuthChecked(true));
-  //       navigate(PROFILE, { replace: true });
-  //     }
-  //     else {
-  //       setRegisterError(res.payload.errors);
-  //     }
-  //   });
-  // }
 
   function handleFormSubmit(e) {
     dispatch(registerUser(e))
@@ -69,7 +51,6 @@ function Signup() {
         }}
       >
         <Option value="351">+351</Option>
-        {/* <Option value="7">+7</Option> */}
       </Select>
     </Form.Item>
   );
@@ -103,7 +84,6 @@ function Signup() {
               <Input placeholder="Enter your name" size="large" />
             </Form.Item>
           </div>
-
           <div className={styles.signup__container}>
             <h4 className={styles.signup__input_title}>Second name</h4>
             <Form.Item
@@ -121,7 +101,6 @@ function Signup() {
               />
             </Form.Item>
           </div>
-
           <div className={styles.signup__container}>
             <h4 className={styles.signup__input_title}>Surname</h4>
             <Form.Item
@@ -136,7 +115,6 @@ function Signup() {
               <Input placeholder="Enter your name" size="large" />
             </Form.Item>
           </div>
-
           <div className={styles.signup__container}>
             <h4 className={styles.signup__input_title}>Telephone</h4>
             <Form.Item
@@ -153,13 +131,9 @@ function Signup() {
                 placeholder="xxx xxxxxxx"
                 addonBefore={prefixSelector}
                 type="number"
-                // style={{
-                //   width: "100%",
-                // }}
               />
             </Form.Item>
           </div>
-
           <div className={styles.signup__container}>
             <h4 className={styles.signup__input_title}>Email</h4>
             <Form.Item
@@ -178,7 +152,6 @@ function Signup() {
               <Input size="large" placeholder="Enter your email" type="email" />
             </Form.Item>
           </div>
-
           <div className={styles.signup__container}>
             <h4 className={styles.signup__input_title}>Password</h4>
             <Form.Item
@@ -198,7 +171,6 @@ function Signup() {
               />
             </Form.Item>
           </div>
-
           <div className={styles.signup__container}>
             <h4 className={styles.signup__input_title}>Confirm password</h4>
             <Form.Item
@@ -229,73 +201,6 @@ function Signup() {
               />
             </Form.Item>
           </div>
-
-          {/* <div className={styles.signup__role_container}>
-            <h4 className={styles.signup__title}>I want to be</h4>
-
-            <div className={styles.signup__icons_container}>
-              <div className={styles.signup__icon_checkbox_container}>
-                <div className={styles.signup__icon_container}>
-                  <img
-                    className={styles.signup__order_icon}
-                    src={truck_icon_dark}
-                    alt="truck_icon_dark"
-                  />
-                  <p className={styles.signup__icon_title}>Courier</p>
-                </div>
-
-                <Form.Item
-                  name="courier"
-                  valuePropName="checked"
-                  rules={[
-                    {
-                      validator: (_, value) =>
-                        value
-                          ? Promise.resolve()
-                          : Promise.reject(new Error("Should choose one option")),
-                    },
-                  ]}
-                  // {...tailFormItemLayout}
-                >
-                  <Checkbox
-                    className={styles.signup__checkbox}
-                    type="checkbox"
-                  ></Checkbox>
-                </Form.Item>
-              </div>
-
-              <div className={styles.signup__icon_checkbox_container}>
-                <div className={styles.signup__icon_container}>
-                  <img
-                    className={styles.signup__order_icon}
-                    src={new_order_icon}
-                    alt="new_order_icon"
-                  />
-                  <p className={styles.signup__icon_title}>Sender</p>
-                </div>
-
-                <Form.Item
-                  name="sender"
-                  valuePropName="checked"
-                  rules={[
-                    {
-                      validator: (_, value) =>
-                        value
-                          ? Promise.resolve()
-                          : Promise.reject(new Error("Should choose one option")),
-                    },
-                  ]}
-                  // {...tailFormItemLayout}
-                >
-                  <Checkbox
-                    className={styles.signup__checkbox}
-                    type="checkbox"
-                  ></Checkbox>
-                </Form.Item>
-              </div>
-            </div>
-          </div> */}
-
           <div className={styles.signup__role_container}>
             <h4 className={styles.signup__input_title}>I want to be</h4>
             <div className={styles.signup__icons_radio_container}>
@@ -318,7 +223,6 @@ function Signup() {
                   <p className={styles.signup__icon_title}>Sender</p>
                 </div>
               </div>
-
               <div className={styles.signup__icons_container}>
                 <Form.Item
                   name="role"
@@ -336,7 +240,6 @@ function Signup() {
               </div>
             </div>
           </div>
-
           <Form.Item
             className={styles.signup__checkbox}
             name="agreement"
@@ -349,13 +252,11 @@ function Signup() {
                     : Promise.reject(new Error("Should accept agreement")),
               },
             ]}
-            // {...tailFormItemLayout}
           >
             <Checkbox>
-              I have read the <a href="">agreement</a>
+              I have read the <a>agreement</a>
             </Checkbox>
           </Form.Item>
-
           <div className={styles.signup__button_container}> </div>
           <Form.Item>
             <SubmitButton

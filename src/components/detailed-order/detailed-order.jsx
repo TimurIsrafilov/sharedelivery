@@ -1,25 +1,15 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-
-import StarRating from "../star-rating/star-rating";
-
 import styles from "./detailed-order.module.css";
-
+import StarRating from "../star-rating/star-rating";
+import { selectOrder } from "../../services/order/reducer";
+import { FROM, SENDER, TO } from "../../utils/constants";
 import arrow_back_icon from "../../images/arrow_back_icon.svg";
 import like_shifted_icon from "../../images/like_shifted_icon.svg";
 import like_shifted_icon_active from "../../images/like_shifted_icon_active.svg";
 
-import { COMMON_SEARCH, FROM, SENDER, TO } from "../../utils/constants";
-
-import { selectOrder } from "../../services/order/reducer";
-import { useState } from "react";
-
-function DetailedOrder(
-  item
-  // : TypeOrderInfo
-) {
-  // : React.JSX.Element
-
+function DetailedOrder() {
   const [likeStatus, setLikeStatus] = useState(false);
 
   const navigate = useNavigate();
@@ -53,7 +43,6 @@ function DetailedOrder(
                 alt="arrow_back_icon"
               />
             </button>
-
             <div className={styles.detailed_order__icon_container}>
               <button
                 type="button"
@@ -70,10 +59,8 @@ function DetailedOrder(
               </button>
             </div>
           </div>
-
           <div className={styles.detailed_order__adress_container}>
             <span className={styles.detailed_order__title}>{FROM}</span>
-
             <p className={styles.detailed_order__town}>
               {orderToShow.from_town}
             </p>
@@ -92,15 +79,12 @@ function DetailedOrder(
               </p>
             </div>
           </div>
-
           <div className={styles.detailed_order__adress_container}>
             <span className={styles.detailed_order__title}>{TO}</span>
-
             <p className={styles.detailed_order__town}>{orderToShow.to_town}</p>
             <p className={styles.detailed_order__street}>
               {`${orderToShow.to_street} ${orderToShow.to_house}, ${orderToShow.to_zip}`}
             </p>
-
             <div className={styles.detailed_order__date_container}>
               <p className={styles.detailed_order__date}>
                 {new Date(orderToShow.to_datetime).toLocaleDateString()}
@@ -113,7 +97,6 @@ function DetailedOrder(
               </p>
             </div>
           </div>
-
           <div className={styles.detailed_order__sender_container}>
             <div className={styles.detailed_order__sender_name_container}>
               <span className={styles.detailed_order__title}>{SENDER}</span>
@@ -122,7 +105,6 @@ function DetailedOrder(
                 {orderToShow.sender}
               </p>
             </div>
-
             <div className={styles.detailed_order__sender_rating}>
               <StarRating rating={orderToShow.sender_rating} />
               <p className={styles.detailed_order__rating}>
@@ -130,11 +112,9 @@ function DetailedOrder(
               </p>
             </div>
           </div>
-
           <p className={styles.detailed_order__description}>
             {orderToShow.detailed_description}
           </p>
-
           <div className={styles.detailed_order__photos_container}>
             {orderToShow?.photos.map((item, index) => (
               <img
@@ -145,7 +125,6 @@ function DetailedOrder(
               />
             ))}
           </div>
-
           <div className={styles.detailed_order__buttons_container}>
             <button
               type="button"

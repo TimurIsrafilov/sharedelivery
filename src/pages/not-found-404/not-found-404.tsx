@@ -1,6 +1,6 @@
-import { Navigate, useNavigate } from "react-router-dom";
-import CommonButton from "../../components/common-button/common-button";
+import { useNavigate } from "react-router-dom";
 import styles from "./not-found-404.module.css";
+import CommonButton from "../../components/ui/common-button/common-button";
 import { COMMON_SEARCH } from "../../utils/constants";
 
 function NotFound404(): React.JSX.Element {

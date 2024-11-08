@@ -1,38 +1,20 @@
-import { Checkbox, Form, Input } from "antd";
-import CommonForm from "../../components/common-form/common-form";
-import styles from "./login.module.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../../services/user/actions";
-import SubmitButton from "../../components/submit-button/submit-button";
-import { PROFILE } from "../../utils/constants";
-
-import { setIsUserAuthChecked } from "../../services/user/reducer";
-import TopMenu from "../../components/top-menu/top-menu";
+import { Checkbox, Form, Input } from "antd";
+import styles from "./login.module.css";
+import SubmitButton from "../../components/ui/submit-button/submit-button";
 import TopMenuUnlogin from "../../components/top-menu-unlogin/top-menu-unlogin";
+import { loginUser } from "../../services/user/actions";
+import { setIsUserAuthChecked } from "../../services/user/reducer";
+import { PROFILE } from "../../utils/constants";
 
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const formType = "Login";
-  const formLoginInputs = [
-    {
-      name: "Email",
-      placeholder: "Enter your email",
-      validationError: "use valid Emailservice after symbol @",
-    },
-    {
-      name: "Password",
-      placeholder: "Enter password",
-      validationError: "use letters, symbols and numbers",
-    },
-  ];
-
   const [form] = Form.useForm();
 
   function handleFormSubmit(e) {
-    // e.preventDefault();
     dispatch(loginUser(e)).then((res) => {
       if (res.payload.success) {
         localStorage.setItem("accessToken", res.payload.access_token);
@@ -69,14 +51,9 @@ function Login() {
                 },
               ]}
             >
-              <Input
-                size="large"
-                placeholder="Enter your email"
-                // defaultValue="12e1mil1@e1mal.com"
-              />
+              <Input size="large" placeholder="Enter your email" />
             </Form.Item>
           </div>
-
           <div className={styles.login__container}>
             <h4 className={styles.login__input_title}>Password</h4>
             <Form.Item
@@ -89,14 +66,9 @@ function Login() {
               ]}
               hasFeedback
             >
-              <Input.Password
-                size="large"
-                placeholder="Enter password"
-                // defaultValue="password"
-              />
+              <Input.Password size="large" placeholder="Enter password" />
             </Form.Item>
           </div>
-
           <Form.Item
             name="agreement"
             valuePropName="checked"
@@ -106,11 +78,9 @@ function Login() {
                   value ? Promise.resolve() : Promise.reject(new Error("")),
               },
             ]}
-            // {...tailFormItemLayout}
           >
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
-
           <div className={styles.login__button_container}> </div>
           <Form.Item>
             <SubmitButton
